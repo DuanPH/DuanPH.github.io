@@ -169,42 +169,13 @@
 <p>对于用户自定义投影，可通过定义 <code>EPSG code</code> 和 <code>defs</code> 来创建投影，<code>defs</code> 内容为参考投影参数，其分别代表了名称、投影、转换到 WGS84 坐标系（三参数）、椭球长半轴、扁率、原点纬线、中央经线、两条标准纬线、东偏移量、北偏移量和单位等。 </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Proj4js.defs(<span class="string">"EPSG:10010"</span>,<span class="string">"+title=Beijing1954 +proj=lcc +towgs84=0.0000,0.0000,0.0000 +a=6378245.0000 +rf=298.3 +lat_0=0.00000000 +lon_0=104.000000000 +lat_1=24.000000000 +lat_2=40.000000000 +x_0=0.000 +y_0=0.000 +units=m +no_defs"</span>);</span><br></pre></td></tr></table></figure>
 
-<hr>
 
-        </div>
-        
-        <!-- 留言 -->
-        <div style="margin-top: 50px;border: 1px solid rgb(201, 200, 200);border-radius: 5px;">
-            <h2 style="text-align: center;">留言区</h2>
-            
-                <section id="comments" class="comments">
-                    <style>
-                        .comments{margin-top: 20px;padding:0px;background:#fff}
-                        @media screen and (max-width:1000px){.comments{margin:auto;padding:10px;background:rgb(109, 107, 107)}}
-                    </style>
-                     <div class="valine_comment"></div>
-<!--载入js，在</body>之前插入即可-->
-<!--Leancloud 操作库:-->
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<!--Valine 的核心代码库-->
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-  new Valine({
-      el: '.valine_comment',
-      app_id: 'CMoe2b3YV2ffI4PpsrKfxHUr-gzGzoHsz',
-      app_key: 'nTl8UM4tymyD2jg9uMgs1QhO',
-      placeholder: '留言框',
-      notify: 'true',
-      verify: 'true',
-    });
-</script>
-                </section>
-             
         </div>
 
         
             <section class="post-copyright">
-                
+                <p style="text-align: center;">end</p>
+                <!-- 
                     <p class="copyright-item">
                         <span>Author:</span>
                         <span>庸人不自扰</span>
@@ -227,8 +198,7 @@
                          <span>Slogan:</span>
                          <span>天行健，君子以自强不息</span>
                      </p>
-                
-
+                 -->
             </section>
         
         <section class="post-tags">
@@ -258,6 +228,35 @@
             <a class="next" rel="next" href="/2020/01/10/01.%20%E5%88%9B%E5%BB%BA%E4%B8%80%E5%B9%85%E5%9C%B0%E5%9B%BE/">01. 创建一幅地图</a>
             
         </section>
+
+        <!-- 留言 -->
+        <div style="margin-top: 50px;border: 1px solid rgb(201, 200, 200);border-radius: 5px;">
+            <h2 style="text-align: center;">留言区</h2>
+            
+                <section id="comments" class="comments">
+                    <style>
+                        .comments{margin-top: 20px;padding:0px;background:#fff}
+                        @media screen and (max-width:1000px){.comments{margin:auto;padding:10px;background:rgb(109, 107, 107)}}
+                    </style>
+                     <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'CMoe2b3YV2ffI4PpsrKfxHUr-gzGzoHsz',
+      app_key: 'nTl8UM4tymyD2jg9uMgs1QhO',
+      placeholder: '留言框',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+                </section>
+             
+        </div>
     </article>
 </div>
 

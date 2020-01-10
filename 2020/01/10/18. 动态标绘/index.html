@@ -281,44 +281,15 @@
 <li><p>修改属性。标号可以修改的属性分两部分存储，和风格有关的属性从<code>L.supermap.plotting.PlottingObject</code>的style里获取，和形状有关的属性从<code>L.supermap.plotting.PlottingObject</code>里获取。 这里的代码段只以少部分属性为例，<a href="https://iclient.supermap.io/web/introduction/leafletDevelop.html#properties" target="_blank" rel="noopener">动态标绘标号的属性</a> 会具体列出所有属性。 </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 首先激活featuresselected事件</span></span><br><span class="line">editControl.on(SuperMap.Plot.Event.featuresselected, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(event&amp;&amp; event!== <span class="literal">null</span>)&#123;</span><br><span class="line">        <span class="comment">// 被选中，要修改的标号</span></span><br><span class="line">        selectfeature = event. features[<span class="number">0</span>];</span><br><span class="line">        <span class="comment">// 修改风格相关的属性</span></span><br><span class="line">        <span class="keyword">if</span>(selectfeature !== <span class="literal">null</span> &amp;&amp; selectfeature.style !== <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="comment">// 修改边线宽度、边线颜色、边线颜色透明度</span></span><br><span class="line">            selectfeature.setStyle(&#123;<span class="attr">weight</span>: <span class="number">3</span>&#125;);</span><br><span class="line">            selectfeature.setStyle(&#123;<span class="attr">color</span>: <span class="string">"#00ff00"</span>&#125;);</span><br><span class="line">            selectfeature.setStyle(&#123;<span class="attr">opacity</span>: <span class="number">0.5</span>&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 修改形状相关的属性</span></span><br><span class="line">        <span class="keyword">if</span>(selectfeature !== <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="comment">// 修改旋转、缩放、标号等级，适用于点标号</span></span><br><span class="line">            selectfeature.setRotate(<span class="number">30</span>);</span><br><span class="line">            selectfeature.setScale(<span class="number">2</span>);</span><br><span class="line">            selectfeature.setSymbolRank(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<hr>
 </li>
 </ol>
 
         </div>
-        
-        <!-- 留言 -->
-        <div style="margin-top: 50px;border: 1px solid rgb(201, 200, 200);border-radius: 5px;">
-            <h2 style="text-align: center;">留言区</h2>
-            
-                <section id="comments" class="comments">
-                    <style>
-                        .comments{margin-top: 20px;padding:0px;background:#fff}
-                        @media screen and (max-width:1000px){.comments{margin:auto;padding:10px;background:rgb(109, 107, 107)}}
-                    </style>
-                     <div class="valine_comment"></div>
-<!--载入js，在</body>之前插入即可-->
-<!--Leancloud 操作库:-->
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<!--Valine 的核心代码库-->
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-  new Valine({
-      el: '.valine_comment',
-      app_id: 'CMoe2b3YV2ffI4PpsrKfxHUr-gzGzoHsz',
-      app_key: 'nTl8UM4tymyD2jg9uMgs1QhO',
-      placeholder: '留言框',
-      notify: 'true',
-      verify: 'true',
-    });
-</script>
-                </section>
-             
-        </div>
 
         
             <section class="post-copyright">
-                
+                <p style="text-align: center;">end</p>
+                <!-- 
                     <p class="copyright-item">
                         <span>Author:</span>
                         <span>庸人不自扰</span>
@@ -341,8 +312,7 @@
                          <span>Slogan:</span>
                          <span>天行健，君子以自强不息</span>
                      </p>
-                
-
+                 -->
             </section>
         
         <section class="post-tags">
@@ -372,6 +342,35 @@
             <a class="next" rel="next" href="/2020/01/10/17.%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">17. 数据可视化</a>
             
         </section>
+
+        <!-- 留言 -->
+        <div style="margin-top: 50px;border: 1px solid rgb(201, 200, 200);border-radius: 5px;">
+            <h2 style="text-align: center;">留言区</h2>
+            
+                <section id="comments" class="comments">
+                    <style>
+                        .comments{margin-top: 20px;padding:0px;background:#fff}
+                        @media screen and (max-width:1000px){.comments{margin:auto;padding:10px;background:rgb(109, 107, 107)}}
+                    </style>
+                     <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'CMoe2b3YV2ffI4PpsrKfxHUr-gzGzoHsz',
+      app_key: 'nTl8UM4tymyD2jg9uMgs1QhO',
+      placeholder: '留言框',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+                </section>
+             
+        </div>
     </article>
 </div>
 
