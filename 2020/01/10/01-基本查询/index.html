@@ -379,7 +379,37 @@
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 	案例：</span></span><br><span class="line"><span class="comment">-- 			查询部门编号&gt;90或邮箱包含a的员工信息</span></span><br><span class="line"><span class="comment">-- 			1. 写法一</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> employee <span class="keyword">where</span> departmentId&gt;<span class="number">90</span> <span class="keyword">or</span> email <span class="keyword">like</span> <span class="string">'%a%'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 			2. 写法二</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> employee <span class="keyword">where</span> email <span class="keyword">like</span> <span class="string">'%a%'</span></span><br><span class="line"><span class="keyword">union</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> employee <span class="keyword">where</span> departmentId&gt;<span class="number">90</span>;</span><br></pre></td></tr></table></figure>
 
+<hr>
 
+        </div>
+        
+        <!-- 留言 -->
+        <div style="margin-top: 50px;border: 1px solid rgb(201, 200, 200);border-radius: 5px;">
+            <h2 style="text-align: center;">留言区</h2>
+            
+                <section id="comments" class="comments">
+                    <style>
+                        .comments{margin-top: 20px;padding:0px;background:#fff}
+                        @media screen and (max-width:1000px){.comments{margin:auto;padding:10px;background:rgb(109, 107, 107)}}
+                    </style>
+                     <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'CMoe2b3YV2ffI4PpsrKfxHUr-gzGzoHsz',
+      app_key: 'nTl8UM4tymyD2jg9uMgs1QhO',
+      placeholder: '留言框',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+                </section>
+             
         </div>
 
         
@@ -438,8 +468,6 @@
             <a class="next" rel="next" href="/2020/01/10/00.%20SQL/">00. SQL</a>
             
         </section>
-
-
     </article>
 </div>
 

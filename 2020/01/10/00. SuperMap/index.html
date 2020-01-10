@@ -209,7 +209,37 @@
 <p>这里自己学习记录的均为基于超图官方开发指南文档 - <a href="https://iclient.supermap.io/web/introduction/leafletDevelop.html" target="_blank" rel="noopener">SuperMap iClient JavaScript 10i  for Leaflet</a></p>
 <p>如需全面学习，请转到超图官方网站进行学习，此处个人博客仅仅用于个人学习记录。</p>
 </blockquote>
+<hr>
 
+        </div>
+        
+        <!-- 留言 -->
+        <div style="margin-top: 50px;border: 1px solid rgb(201, 200, 200);border-radius: 5px;">
+            <h2 style="text-align: center;">留言区</h2>
+            
+                <section id="comments" class="comments">
+                    <style>
+                        .comments{margin-top: 20px;padding:0px;background:#fff}
+                        @media screen and (max-width:1000px){.comments{margin:auto;padding:10px;background:rgb(109, 107, 107)}}
+                    </style>
+                     <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'CMoe2b3YV2ffI4PpsrKfxHUr-gzGzoHsz',
+      app_key: 'nTl8UM4tymyD2jg9uMgs1QhO',
+      placeholder: '留言框',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+                </section>
+             
         </div>
 
         
@@ -266,8 +296,6 @@
             
             
         </section>
-
-
     </article>
 </div>
 

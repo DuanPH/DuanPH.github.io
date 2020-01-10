@@ -288,6 +288,37 @@
 <p>运行效果：</p>
 <img src="/2020/01/10/07.%20%E5%9C%B0%E7%89%A9%E6%9F%A5%E8%AF%A2/8.png" class=""> 
 
+<hr>
+
+        </div>
+        
+        <!-- 留言 -->
+        <div style="margin-top: 50px;border: 1px solid rgb(201, 200, 200);border-radius: 5px;">
+            <h2 style="text-align: center;">留言区</h2>
+            
+                <section id="comments" class="comments">
+                    <style>
+                        .comments{margin-top: 20px;padding:0px;background:#fff}
+                        @media screen and (max-width:1000px){.comments{margin:auto;padding:10px;background:rgb(109, 107, 107)}}
+                    </style>
+                     <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'CMoe2b3YV2ffI4PpsrKfxHUr-gzGzoHsz',
+      app_key: 'nTl8UM4tymyD2jg9uMgs1QhO',
+      placeholder: '留言框',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+                </section>
+             
         </div>
 
         
@@ -346,8 +377,6 @@
             <a class="next" rel="next" href="/2020/01/10/06.%20%E9%9D%A2%E7%A7%AF%E5%92%8C%E8%B7%9D%E7%A6%BB%E7%9A%84%E9%87%8F%E7%AE%97/">06. 面积和距离的量算</a>
             
         </section>
-
-
     </article>
 </div>
 

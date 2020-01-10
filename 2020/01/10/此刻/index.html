@@ -215,7 +215,38 @@
 <hr>
 <h3 id="我自己博客出世的宗旨"><a href="#我自己博客出世的宗旨" class="headerlink" title="我自己博客出世的宗旨"></a>我自己博客出世的宗旨</h3><p>​        记录成长的瞬间。</p>
 <p>​        人会一直成长，标志就是随时随地的学习。</p>
+<hr>
+<hr>
 
+        </div>
+        
+        <!-- 留言 -->
+        <div style="margin-top: 50px;border: 1px solid rgb(201, 200, 200);border-radius: 5px;">
+            <h2 style="text-align: center;">留言区</h2>
+            
+                <section id="comments" class="comments">
+                    <style>
+                        .comments{margin-top: 20px;padding:0px;background:#fff}
+                        @media screen and (max-width:1000px){.comments{margin:auto;padding:10px;background:rgb(109, 107, 107)}}
+                    </style>
+                     <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'CMoe2b3YV2ffI4PpsrKfxHUr-gzGzoHsz',
+      app_key: 'nTl8UM4tymyD2jg9uMgs1QhO',
+      placeholder: '留言框',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+                </section>
+             
         </div>
 
         
@@ -270,8 +301,6 @@
             <a class="next" rel="next" href="/2020/01/10/01-%E5%9F%BA%E6%9C%AC%E6%9F%A5%E8%AF%A2/">01. 基本查询</a>
             
         </section>
-
-
     </article>
 </div>
 

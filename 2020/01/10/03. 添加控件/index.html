@@ -219,7 +219,37 @@
 <hr>
 <h3 id="图层切换控件"><a href="#图层切换控件" class="headerlink" title="图层切换控件"></a>图层切换控件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url =<span class="string">"https://iserver.supermap.io"</span>;</span><br><span class="line"><span class="keyword">var</span> China = L.supermap.tiledMapLayer(url + <span class="string">'/iserver/services/map-china400/rest/maps/China'</span>,&#123;<span class="attr">noWrap</span>:<span class="literal">true</span>&#125;);</span><br><span class="line"><span class="keyword">var</span> ChinaDark = L.supermap.tiledMapLayer(url + <span class="string">'/iserver/services/map-china400/rest/maps/ChinaDark'</span>, &#123;<span class="attr">noWrap</span>:<span class="literal">true</span>&#125;);</span><br><span class="line"><span class="comment">// 初始化地图</span></span><br><span class="line"><span class="keyword">var</span> map = L.map(<span class="string">'map'</span>, &#123;</span><br><span class="line">    center: [<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">    maxZoom: <span class="number">18</span>,</span><br><span class="line">    zoom: <span class="number">2</span>,</span><br><span class="line">    zoomControl: <span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// 设置图层数组</span></span><br><span class="line">    layers: [China]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> baseMaps = &#123; <span class="string">"China"</span>: China, <span class="string">"ChinaDark"</span>: ChinaDark &#125;;</span><br><span class="line"><span class="comment">// 添加图层切换控件</span></span><br><span class="line">L.control.layers(baseMaps).addTo(map);</span><br></pre></td></tr></table></figure>
 
+<hr>
 
+        </div>
+        
+        <!-- 留言 -->
+        <div style="margin-top: 50px;border: 1px solid rgb(201, 200, 200);border-radius: 5px;">
+            <h2 style="text-align: center;">留言区</h2>
+            
+                <section id="comments" class="comments">
+                    <style>
+                        .comments{margin-top: 20px;padding:0px;background:#fff}
+                        @media screen and (max-width:1000px){.comments{margin:auto;padding:10px;background:rgb(109, 107, 107)}}
+                    </style>
+                     <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'CMoe2b3YV2ffI4PpsrKfxHUr-gzGzoHsz',
+      app_key: 'nTl8UM4tymyD2jg9uMgs1QhO',
+      placeholder: '留言框',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+                </section>
+             
         </div>
 
         
@@ -278,8 +308,6 @@
             <a class="next" rel="next" href="/2020/01/10/02.%20%E4%B8%BA%E5%9C%B0%E5%9B%BE%E8%AE%BE%E7%BD%AE%E6%8A%95%E5%BD%B1/">02. 为地图设置投影</a>
             
         </section>
-
-
     </article>
 </div>
 

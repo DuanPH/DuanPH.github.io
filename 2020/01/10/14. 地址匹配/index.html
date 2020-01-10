@@ -227,9 +227,37 @@
 <p>运行效果：</p>
 <img src="/2020/01/10/14.%20%E5%9C%B0%E5%9D%80%E5%8C%B9%E9%85%8D/2.png" class=""> 
 
+<hr>
 
-
-
+        </div>
+        
+        <!-- 留言 -->
+        <div style="margin-top: 50px;border: 1px solid rgb(201, 200, 200);border-radius: 5px;">
+            <h2 style="text-align: center;">留言区</h2>
+            
+                <section id="comments" class="comments">
+                    <style>
+                        .comments{margin-top: 20px;padding:0px;background:#fff}
+                        @media screen and (max-width:1000px){.comments{margin:auto;padding:10px;background:rgb(109, 107, 107)}}
+                    </style>
+                     <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+      el: '.valine_comment',
+      app_id: 'CMoe2b3YV2ffI4PpsrKfxHUr-gzGzoHsz',
+      app_key: 'nTl8UM4tymyD2jg9uMgs1QhO',
+      placeholder: '留言框',
+      notify: 'true',
+      verify: 'true',
+    });
+</script>
+                </section>
+             
         </div>
 
         
@@ -288,8 +316,6 @@
             <a class="next" rel="next" href="/2020/01/10/13.%20%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%A1%E7%AE%97/">13. 客户端计算</a>
             
         </section>
-
-
     </article>
 </div>
 
