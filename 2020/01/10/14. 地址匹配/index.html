@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="庸人不自扰">
+
+
+    <meta name="subtitle" content="DPH Blog">
+
+
+    <meta name="description" content="记录成长的瞬间">
+
+
+
+<title>14. 地址匹配 | DPH Blog</title>
+
+
+
+    <link rel="icon" href="/myblog.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DPH Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DPH Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">14. 地址匹配</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">庸人不自扰</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">一月 10, 2020&nbsp;&nbsp;11:35:48</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/other/">其他</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <hr>
+<h3 id="SuperMap-iClient-for-Leaflet-支持地址匹配服务。"><a href="#SuperMap-iClient-for-Leaflet-支持地址匹配服务。" class="headerlink" title="SuperMap iClient for Leaflet 支持地址匹配服务。"></a>SuperMap iClient for Leaflet 支持地址匹配服务。</h3><blockquote>
+<p>地址匹配服务包含<code>正向匹配</code>与<code>反向匹配</code>两种方式，即，用户可通过地点名称找到地址位置，也可以找到指定位置上的地点。 </p>
+</blockquote>
+<hr>
+<h3 id="正向地址匹配"><a href="#正向地址匹配" class="headerlink" title="正向地址匹配"></a>正向地址匹配</h3><blockquote>
+<p>正向地址匹配根据地点描述、城市范围返回对应的地理坐标和结构化的地址详细描述，支持中文模糊匹配。 </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正向匹配参数</span></span><br><span class="line"><span class="keyword">var</span> geoCodeParam = <span class="keyword">new</span> SuperMap.GeoCodingParameter(&#123;</span><br><span class="line">		address: <span class="string">"超图软件"</span>, 					<span class="comment">// 地址</span></span><br><span class="line">		fromIndex:<span class="number">0</span>, 						   <span class="comment">// 设置返回对象的起始索引值</span></span><br><span class="line">		toIndex:<span class="number">10</span>, 						   <span class="comment">// 设置返回对象的结束索引值。</span></span><br><span class="line">		filters: <span class="string">"北京市,朝阳区"</span>, 			   <span class="comment">// 过滤条件</span></span><br><span class="line">		prjCoordSys:&#123;epsgcode26&#125;, 			   <span class="comment">// 坐标设置</span></span><br><span class="line">		maxReturn:<span class="number">3</span> 						   <span class="comment">// 最大返回结果数</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 创建地址匹配服务</span></span><br><span class="line"><span class="keyword">var</span> addressUrl = <span class="string">"https://iserver.supermap.io/iserver/services/addressmatch-Address/restjsr/v1/address"</span>,</span><br><span class="line"><span class="keyword">var</span> addressMatchService = L.supermap.addressMatchService(addressUrl);</span><br><span class="line">		<span class="comment">// 向服务端发送请求进行正向地址匹配，并获取返回的结果</span></span><br><span class="line">		addressMatchService.code(geoCodeParam, <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">		<span class="comment">// 获取服务端返回的结果</span></span><br><span class="line">		<span class="keyword">var</span> featuers = obj.result</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/14.%20%E5%9C%B0%E5%9D%80%E5%8C%B9%E9%85%8D/1.png" class=""> 
+
+<hr>
+<h3 id="反向地址匹配"><a href="#反向地址匹配" class="headerlink" title="反向地址匹配"></a>反向地址匹配</h3><blockquote>
+<p>反向地址匹配通过输入地址坐标来获取对应的规范化的地址描述。 </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 反向匹配参数</span></span><br><span class="line"><span class="keyword">var</span> geoDecodeParam = <span class="keyword">new</span> SuperMap.GeoDecodingParameter(&#123;</span><br><span class="line">		x: <span class="number">116.3518541194</span>, 									<span class="comment">// 横坐标</span></span><br><span class="line">		y: <span class="number">40.00097839595</span>, 									<span class="comment">// 纵坐标</span></span><br><span class="line">		fromIndex: <span class="number">0</span>,	 									<span class="comment">// 设置返回对象的起始索引值。</span></span><br><span class="line">		toIndex: <span class="number">10</span>, 										<span class="comment">// 设置返回对象的结束索引值。</span></span><br><span class="line">		filters: <span class="string">""</span>, 										<span class="comment">// 过滤字段</span></span><br><span class="line">		prjCoordSys: &#123;epsgcode26&#125;, 							<span class="comment">// 坐标设置</span></span><br><span class="line">		maxReturn: <span class="number">3</span>, 										<span class="comment">// 最大结果数</span></span><br><span class="line">		geoDecodingRadius: <span class="number">1000</span> 							<span class="comment">// 查询半径</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 创建地址匹配服务</span></span><br><span class="line"><span class="keyword">var</span> addressUrl = <span class="string">"https://iserver.supermap.io/iserver/services/addressmatch-Address/restjsr/v1/address"</span>,</span><br><span class="line">addressMatchService = <span class="keyword">new</span> ol.supermap.AddressMatchService(addressUrl);</span><br><span class="line">		<span class="comment">// 向服务端发送请求进行反向地址匹配，并获取返回的结果</span></span><br><span class="line">		addressMatchService.decode(geoDecodeParam, <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">		<span class="comment">// 获取服务端返回的结果</span></span><br><span class="line">		<span class="keyword">var</span> featuers = obj.result</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/14.%20%E5%9C%B0%E5%9D%80%E5%8C%B9%E9%85%8D/2.png" class=""> 
+
+
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>庸人不自扰</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2020/01/10/14.%20%E5%9C%B0%E5%9D%80%E5%8C%B9%E9%85%8D/">http://yoursite.com/2020/01/10/14.%20%E5%9C%B0%E5%9D%80%E5%8C%B9%E9%85%8D/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>天行健，君子以自强不息</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/SuperMap/"># SuperMap</a>
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/01/10/15.%20%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">15. 大数据分析</a>
+            
+            
+            <a class="next" rel="next" href="/2020/01/10/13.%20%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%A1%E7%AE%97/">13. 客户端计算</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 庸人不自扰 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>        
+</footer>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?61def953aa124497ee616cdacabb1116";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    </div>
+</body>
+</html>

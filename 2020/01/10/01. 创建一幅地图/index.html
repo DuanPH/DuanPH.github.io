@@ -16,7 +16,7 @@
 
 
 
-<title>SuperMap-创建一幅地图 | DPH Blog</title>
+<title>01. 创建一幅地图 | DPH Blog</title>
 
 
 
@@ -178,7 +178,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">SuperMap-创建一幅地图</h1>
+            <h1 class="post-title">01. 创建一幅地图</h1>
             
                 <div class="post-meta">
                     
@@ -203,12 +203,13 @@
         </header>
 
         <div class="post-content">
-            <h1 id="创建一幅地图"><a href="#创建一幅地图" class="headerlink" title="创建一幅地图"></a>创建一幅地图</h1><hr>
+            <hr>
 <h3 id="SuperMap-iServer-发布的地图"><a href="#SuperMap-iServer-发布的地图" class="headerlink" title="SuperMap iServer 发布的地图"></a>SuperMap iServer 发布的地图</h3><p>创建地图并初始化地图：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js"</span>&gt;</span>	 <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"https://iclient.supermap.io/dist/leaflet/iclient-leaflet.js"</span>&gt;</span>		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    // 地图显示的div</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"map"</span> <span class="attr">style</span>=<span class="string">"position:absolute;left:0px;right:0px;width:800px;height:500px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> url =<span class="string">"https://iserver.supermap.io/iserver/services/map-world/rest/maps/World"</span>;</span></span><br><span class="line"><span class="actionscript">		<span class="comment">// 初始化地图信息</span></span></span><br><span class="line"><span class="actionscript">		<span class="keyword">var</span> map = L.map(<span class="string">'map'</span>, &#123;</span></span><br><span class="line">		    crs: L.CRS.NonEarthCRS(&#123;</span><br><span class="line">		        bounds: L.bounds([48.4, -7668.25],[8958.85, -55.58]),</span><br><span class="line">		        origin: L.point(48.4,-55.58)</span><br><span class="line">		    &#125;),</span><br><span class="line">		    center: [-4500, 4000],</span><br><span class="line">		    maxZoom: 18,</span><br><span class="line">		    zoom: 1</span><br><span class="line">		&#125;);</span><br><span class="line"><span class="actionscript">		<span class="comment">// 添加图层</span></span></span><br><span class="line"><span class="actionscript">		L.supermap.tiledMapLayer(url, &#123;noWrap: <span class="literal">true</span>&#125;).addTo(map);</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>运行效果：</p>
-<p><img src="C:%5CUsers%5Cduanp%5CAppData%5CLocal%5CTemp%5C1578623575357.png" alt="1578623575357"></p>
+<img src="/2020/01/10/01.%20%E5%88%9B%E5%BB%BA%E4%B8%80%E5%B9%85%E5%9C%B0%E5%9B%BE/1.png" class=""> 
+
 <hr>
 <h3 id="第三方地图"><a href="#第三方地图" class="headerlink" title="第三方地图"></a>第三方地图</h3><blockquote>
 <p>SuperMap iClient for Leaflet 对多种互联网地图信息进行了封装，例如百度地图、天地图等。 </p>
@@ -217,7 +218,8 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span> <span class="attr">data-i18n</span>=<span class="string">"resources.title_tiandituLayer_mecartor"</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"../js/include-web.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">" margin: 0;overflow: hidden;background: #fff;width: 100%;height:100%;position: absolute;top: 0;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"map"</span> <span class="attr">style</span>=<span class="string">"margin:0 auto;width: 100%;height: 100%"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"../../dist/include-leaflet.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> map = L.map(<span class="string">'map'</span>, &#123;</span></span><br><span class="line">            center: [0, 0],</span><br><span class="line">            zoom: 0</span><br><span class="line">        &#125;);</span><br><span class="line"><span class="actionscript">        L.supermap.tiandituTileLayer(&#123;layerType: <span class="string">"img"</span>&#125;).addTo(map); <span class="comment">// 添加天地图图层</span></span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>运行效果：</p>
-<p><img src="C:%5CUsers%5Cduanp%5CAppData%5CLocal%5CTemp%5C1578623598554.png" alt="1578623598554"></p>
+<img src="/2020/01/10/01.%20%E5%88%9B%E5%BB%BA%E4%B8%80%E5%B9%85%E5%9C%B0%E5%9B%BE/2.png" class=""> 
+
 
         </div>
 
@@ -232,7 +234,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://yoursite.com/2020/01/10/SuperMap-%E5%88%9B%E5%BB%BA%E4%B8%80%E5%B9%85%E5%9C%B0%E5%9B%BE/">http://yoursite.com/2020/01/10/SuperMap-%E5%88%9B%E5%BB%BA%E4%B8%80%E5%B9%85%E5%9C%B0%E5%9B%BE/</a></span>
+                        <span><a href="http://yoursite.com/2020/01/10/01.%20%E5%88%9B%E5%BB%BA%E4%B8%80%E5%B9%85%E5%9C%B0%E5%9B%BE/">http://yoursite.com/2020/01/10/01.%20%E5%88%9B%E5%BB%BA%E4%B8%80%E5%B9%85%E5%9C%B0%E5%9B%BE/</a></span>
                     </p>
                 
                 
@@ -271,8 +273,10 @@
         </section>
         <section class="post-nav">
             
+                <a class="prev" rel="prev" href="/2020/01/10/02.%20%E4%B8%BA%E5%9C%B0%E5%9B%BE%E8%AE%BE%E7%BD%AE%E6%8A%95%E5%BD%B1/">02. 为地图设置投影</a>
             
-            <a class="next" rel="next" href="/2020/01/07/hello-world/">Hello World</a>
+            
+            <a class="next" rel="next" href="/2020/01/10/00.%20SuperMap/">00. SuperMap</a>
             
         </section>
 

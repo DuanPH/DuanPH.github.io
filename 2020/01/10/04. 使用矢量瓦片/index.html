@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="庸人不自扰">
+
+
+    <meta name="subtitle" content="DPH Blog">
+
+
+    <meta name="description" content="记录成长的瞬间">
+
+
+
+<title>04. 使用矢量瓦片 | DPH Blog</title>
+
+
+
+    <link rel="icon" href="/myblog.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DPH Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DPH Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">04. 使用矢量瓦片</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">庸人不自扰</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">一月 10, 2020&nbsp;&nbsp;11:33:20</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/other/">其他</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <hr>
+<blockquote>
+<p>矢量瓦片是将矢量数据通过不同的描述文件来组织和定义，在客户端实时解析数据并完成绘制。SuperMap iServer 提供了矢量瓦片图层，即 <code>L.supermap.tiledVectorLayer(url, options)</code>，其中：</p>
+<ul>
+<li>url：地图服务地址</li>
+<li>options：图层可选参数</li>
+</ul>
+</blockquote>
+<h3 id="使用默认风格的矢量瓦片示例"><a href="#使用默认风格的矢量瓦片示例" class="headerlink" title="使用默认风格的矢量瓦片示例"></a>使用默认风格的矢量瓦片示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url=<span class="string">"https://iserver.supermap.io/iserver/services/map-china400/rest/maps/China"</span>;</span><br><span class="line"><span class="comment">//创建一个矢量瓦片图层</span></span><br><span class="line"><span class="keyword">var</span> vectorLayer = L.supermap.tiledVectorLayer(url, &#123;</span><br><span class="line">    cacheEnabled: <span class="literal">true</span>,</span><br><span class="line">    returnAttributes: <span class="literal">true</span>,</span><br><span class="line">    attribution: <span class="string">"Tile Data©SuperMap iServer with©SuperMap iClient"</span></span><br><span class="line">&#125;).addTo(map);</span><br><span class="line"><span class="comment">//矢量瓦片图层添加点击事件，设置默认风格</span></span><br><span class="line">vectorLayer.on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">evt</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 点击矢量瓦片图层获取id &amp; layerName</span></span><br><span class="line">    <span class="keyword">var</span> selectId = evt.layer.properties.id;</span><br><span class="line">    <span class="keyword">var</span> selectLayerName = evt.layer.layerName;</span><br><span class="line">    <span class="comment">// 设置矢量瓦片图层样式</span></span><br><span class="line">    <span class="keyword">var</span> selectStyle = &#123;</span><br><span class="line">        fillColor: <span class="string">'#800026'</span>,</span><br><span class="line">        fillOpacity: <span class="number">0.5</span>,</span><br><span class="line">        stroke: <span class="literal">true</span>, <span class="attr">fill</span>: <span class="literal">true</span>, <span class="attr">color</span>: <span class="string">'red'</span>, <span class="attr">opacity</span>: <span class="number">1</span>, <span class="attr">weight</span>: <span class="number">2</span></span><br><span class="line">    &#125;;</span><br><span class="line">    vectorLayer.setFeaturvectorLayer.setFeatureStyle(selectId, selectLayerName, selectStyle);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/04.%20%E4%BD%BF%E7%94%A8%E7%9F%A2%E9%87%8F%E7%93%A6%E7%89%87/1.png" class=""> 
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>庸人不自扰</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2020/01/10/04.%20%E4%BD%BF%E7%94%A8%E7%9F%A2%E9%87%8F%E7%93%A6%E7%89%87/">http://yoursite.com/2020/01/10/04.%20%E4%BD%BF%E7%94%A8%E7%9F%A2%E9%87%8F%E7%93%A6%E7%89%87/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>天行健，君子以自强不息</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/SuperMap/"># SuperMap</a>
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/01/10/05.%20%E7%BB%98%E5%88%B6%E7%AC%A6%E5%8F%B7%E4%B8%8E%E5%9B%BE%E5%BD%A2/">05. 绘制符号与图形</a>
+            
+            
+            <a class="next" rel="next" href="/2020/01/10/03.%20%E6%B7%BB%E5%8A%A0%E6%8E%A7%E4%BB%B6/">03. 添加控件</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 庸人不自扰 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>        
+</footer>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?61def953aa124497ee616cdacabb1116";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    </div>
+</body>
+</html>

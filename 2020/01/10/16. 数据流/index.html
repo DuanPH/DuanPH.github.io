@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="庸人不自扰">
+
+
+    <meta name="subtitle" content="DPH Blog">
+
+
+    <meta name="description" content="记录成长的瞬间">
+
+
+
+<title>16. 数据流 | DPH Blog</title>
+
+
+
+    <link rel="icon" href="/myblog.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DPH Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DPH Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">16. 数据流</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">庸人不自扰</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">一月 10, 2020&nbsp;&nbsp;11:36:15</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/other/">其他</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <hr>
+<blockquote>
+<p>SuperMap iServer 提供数据流服务，使客户端与服务器之间实现低延迟和实时数据传输。数据流服务采用 <code>WebSocket</code> 协议，支持全双工、双向式通信。服务器可将实时数据服务的分析处理结果作为数据来源向客户端广播，客户端与数据流服务建立连接后，即可自动接收服务器广播的数据。 </p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化地图</span></span><br><span class="line"><span class="keyword">var</span> map,urlQuery =<span class="string">"https://iserver.supermap.io/iserver/services/map-china400/rest/maps/China_4326"</span>,</span><br><span class="line">urlDataFlow =<span class="string">"https://iserver.supermap.io/iserver/services/dataflowTest/dataflow"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> popup = L.popup(&#123;<span class="attr">offset</span>: L.point(<span class="number">0</span>, <span class="number">0</span>), <span class="attr">autoPan</span>: <span class="literal">true</span>&#125;);</span><br><span class="line"><span class="comment">//创建DataFlowLayer，创建DataFlowLayer订阅DataFlow并将结果加载到地图上</span></span><br><span class="line"><span class="keyword">var</span> dataFlowLayer = L.supermap.dataFlowLayer(urlDataFlow, &#123;</span><br><span class="line">	style: <span class="function"><span class="keyword">function</span> (<span class="params">feature</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">		    fillColor: <span class="string">"red"</span>,</span><br><span class="line">		    fillOpacity: <span class="number">1</span>,</span><br><span class="line">		    radius: <span class="number">6</span>,</span><br><span class="line">		    weight: <span class="number">0</span></span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;,</span><br><span class="line">	onEachFeature: <span class="function"><span class="keyword">function</span> (<span class="params">feature, layer</span>) </span>&#123;</span><br><span class="line">		popup.setLatLng(L.GeoJSON.coordsToLatLng(feature.geometry.coordinates))</span><br><span class="line">		    .setContent(feature.properties.time);</span><br><span class="line">		<span class="keyword">if</span> (!popup.isOpen()) &#123;</span><br><span class="line">		    popup.addTo(map);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;);</span><br><span class="line">dataFlowLayer.addTo(map);</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询一个线数据，每两秒将一个点通过dataFlowService广播给iServer的dataflow服务，模拟实时数据</span></span><br><span class="line"><span class="comment">//可通过dataFlowService将其他实时数据广播给SuperMap iServer</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">query</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> param = <span class="keyword">new</span> SuperMap.QueryBySQLParameters(&#123;</span><br><span class="line">		queryParams: &#123;</span><br><span class="line">			name: <span class="string">"Main_Road_L@China#1"</span>,</span><br><span class="line">			attributeFilter: <span class="string">"SMID = 1755"</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">	L.supermap</span><br><span class="line">	.queryService(urlQuery)</span><br><span class="line">	.queryBySQL(param, <span class="function"><span class="keyword">function</span> (<span class="params">serviceResult</span>) </span>&#123;</span><br><span class="line">		featureResult = serviceResult;</span><br><span class="line">		dataFlowService = L.supermap.dataFlowService(urlDataFlow).initBroadcast();</span><br><span class="line">		dataFlowService.on(<span class="string">'broadcastSocketConnected'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">		    timer = <span class="built_in">window</span>.setInterval(<span class="string">"broadcast()"</span>, <span class="number">2000</span>);</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> count = <span class="number">200</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">broadcast</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (count &gt;= featureResult.result.recordsets[<span class="number">0</span>].features.features[<span class="number">0</span>].geometry.coordinates.length) &#123;</span><br><span class="line">		<span class="built_in">window</span>.clearInterval(timer);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">var</span> point = featureResult.result.recordsets[<span class="number">0</span>].features.features[<span class="number">0</span>].geometry.coordinates[count];</span><br><span class="line">	<span class="keyword">var</span> feature = &#123;</span><br><span class="line">		geometry: &#123;<span class="attr">coordinates</span>: [point[<span class="number">0</span>], point[<span class="number">1</span>]], <span class="attr">type</span>: <span class="string">"Point"</span>&#125;,</span><br><span class="line">		id: <span class="number">1</span>,</span><br><span class="line">		type: <span class="string">"Feature"</span>,</span><br><span class="line">		properties: &#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">time</span>: <span class="keyword">new</span> <span class="built_in">Date</span>()&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	dataFlowService.broadcast(feature);</span><br><span class="line">	count += <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/16.%20%E6%95%B0%E6%8D%AE%E6%B5%81/1.png" class=""> 
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>庸人不自扰</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2020/01/10/16.%20%E6%95%B0%E6%8D%AE%E6%B5%81/">http://yoursite.com/2020/01/10/16.%20%E6%95%B0%E6%8D%AE%E6%B5%81/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>天行健，君子以自强不息</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/SuperMap/"># SuperMap</a>
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/01/10/17.%20%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">17. 数据可视化</a>
+            
+            
+            <a class="next" rel="next" href="/2020/01/10/15.%20%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">15. 大数据分析</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 庸人不自扰 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>        
+</footer>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?61def953aa124497ee616cdacabb1116";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    </div>
+</body>
+</html>

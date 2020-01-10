@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="庸人不自扰">
+
+
+    <meta name="subtitle" content="DPH Blog">
+
+
+    <meta name="description" content="记录成长的瞬间">
+
+
+
+<title>06. 面积和距离的量算 | DPH Blog</title>
+
+
+
+    <link rel="icon" href="/myblog.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DPH Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DPH Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">06. 面积和距离的量算</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">庸人不自扰</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">一月 10, 2020&nbsp;&nbsp;11:34:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/other/">其他</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <hr>
+<p>SuperMap iClient for Leaflet 支持距离量算和面积量算。 </p>
+<hr>
+<h3 id="距离量算"><a href="#距离量算" class="headerlink" title="距离量算"></a>距离量算</h3><p>距离量算功能实现步骤：</p>
+<ol>
+<li><p>构建服务参数类</p>
+<p>量算服务参数类提供服务请求所需的信息，该类提供量算的查询参数封装，提供的参数有 <code>geometry</code> 和 <code>unit</code>，用来定义量算的     几何对象和单位，代码如下： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置量算服务参数</span></span><br><span class="line"><span class="keyword">var</span> measureParam = <span class="keyword">new</span> SuperMap.MeasureParameters();</span><br><span class="line"><span class="comment">// 设置要量算的矢量对象(&#123;Line&#125;或&#123;Polygon&#125;)，geometry可以通过直接初始化的方法获取</span></span><br><span class="line">measureParam.geometry= geometry;</span><br><span class="line">measureParam.unit = SuperMap.Unit.METER;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构建服务类并发送请求</p>
+<p>量算服务类负责向服务端发送请求，并将查询结果返回。使用服务类需要指定服务 <code>URL</code> 等服务参数，向服务端发送请求信息，然后通过监听服务请求完成事件，从事件服务数据类中获取最终的结果 <code>Result</code> 对象，按照用户需求进行处理，代码如下： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url = <span class="string">"https://iserver.supermap.io/iserver/services/map-world/rest/maps/World"</span>;</span><br><span class="line"><span class="comment">// 初始化服务类，设置服务请求关键参数</span></span><br><span class="line"><span class="keyword">var</span> measureService = L.supermap.measureService(URL);</span><br><span class="line"><span class="comment">// 提交服务请求，传递服务查询参数，获取返回结果并按照用户需求进行处理</span></span><br><span class="line">measureService.measureDistance(measureParam,<span class="function"><span class="keyword">function</span> (<span class="params">serviceResult</span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">serviceResult</span>);</span></span><br><span class="line"><span class="function">    // 获取服务器返回的结果</span></span><br><span class="line"><span class="function">    <span class="title">var</span> <span class="title">result</span>=<span class="title">serviceResult</span>.<span class="title">result</span>;</span></span><br><span class="line"><span class="function">&#125;);</span></span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/06.%20%E9%9D%A2%E7%A7%AF%E5%92%8C%E8%B7%9D%E7%A6%BB%E7%9A%84%E9%87%8F%E7%AE%97/1.png" class=""> 
+
+</li>
+</ol>
+<hr>
+<h3 id="面积量算"><a href="#面积量算" class="headerlink" title="面积量算"></a>面积量算</h3><ol>
+<li><p>实例化测量服务构造函数，代码如下： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置测量范围</span></span><br><span class="line"><span class="keyword">var</span> polygon = L.polygon([[<span class="number">24</span>, <span class="number">100</span>], [<span class="number">40</span>, <span class="number">100</span>], [<span class="number">40</span>, <span class="number">120</span>], [<span class="number">24</span>, <span class="number">120</span>], [<span class="number">24</span>, <span class="number">100</span>]], &#123;<span class="attr">color</span>: <span class="string">"red"</span>&#125;);</span><br><span class="line"><span class="comment">// 实例化传入多边形参数的测量构造函数</span></span><br><span class="line"><span class="keyword">var</span> areaMeasureParam = <span class="keyword">new</span> SuperMap.MeasureParameters(polygon);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用测量函数 </p>
+<p>调用测量函数，并获取返回结果，代码如下： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 提交服务请求，传递服务查询参数，获取返回结果并按照用户需求进行处理</span></span><br><span class="line">L.supermap .measureService(url) .measureArea(areaMeasureParam, <span class="function"><span class="keyword">function</span> (<span class="params">serviceResult</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取服务器返回的结果</span></span><br><span class="line">    <span class="keyword">var</span> result = serviceResult.result;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/06.%20%E9%9D%A2%E7%A7%AF%E5%92%8C%E8%B7%9D%E7%A6%BB%E7%9A%84%E9%87%8F%E7%AE%97/1.png" class=""> 
+
+</li>
+</ol>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>庸人不自扰</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2020/01/10/06.%20%E9%9D%A2%E7%A7%AF%E5%92%8C%E8%B7%9D%E7%A6%BB%E7%9A%84%E9%87%8F%E7%AE%97/">http://yoursite.com/2020/01/10/06.%20%E9%9D%A2%E7%A7%AF%E5%92%8C%E8%B7%9D%E7%A6%BB%E7%9A%84%E9%87%8F%E7%AE%97/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>天行健，君子以自强不息</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/SuperMap/"># SuperMap</a>
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/01/10/07.%20%E5%9C%B0%E7%89%A9%E6%9F%A5%E8%AF%A2/">07. 地物查询</a>
+            
+            
+            <a class="next" rel="next" href="/2020/01/10/05.%20%E7%BB%98%E5%88%B6%E7%AC%A6%E5%8F%B7%E4%B8%8E%E5%9B%BE%E5%BD%A2/">05. 绘制符号与图形</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 庸人不自扰 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>        
+</footer>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?61def953aa124497ee616cdacabb1116";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    </div>
+</body>
+</html>

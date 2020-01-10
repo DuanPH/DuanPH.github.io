@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="庸人不自扰">
+
+
+    <meta name="subtitle" content="DPH Blog">
+
+
+    <meta name="description" content="记录成长的瞬间">
+
+
+
+<title>02. 为地图设置投影 | DPH Blog</title>
+
+
+
+    <link rel="icon" href="/myblog.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DPH Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DPH Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">02. 为地图设置投影</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">庸人不自扰</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">一月 10, 2020&nbsp;&nbsp;11:06:02</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/other/">其他</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <hr>
+<blockquote>
+<p>SuperMap iClient for Leaflet 通过投影类 <code>L.Proj.CRS</code>  可以方便的定义地图投影，支持设置范围、原点、比例尺数组以及分辨率数组。 </p>
+</blockquote>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义地图投影</span></span><br><span class="line"><span class="keyword">var</span> crs = L.Proj.CRS(<span class="string">"EPSG:4326"</span>, &#123;</span><br><span class="line">    origin: [<span class="number">114.59</span>, <span class="number">42.31</span>],</span><br><span class="line">    scaleDenominators: [<span class="number">100000</span>, <span class="number">50000</span>, <span class="number">25000</span>, <span class="number">20000</span>, <span class="number">10000</span>, <span class="number">5000</span>, <span class="number">2000</span>, <span class="number">1000</span>, <span class="number">500</span>, <span class="number">200</span>, <span class="number">100</span>, <span class="number">50</span>, <span class="number">20</span>, <span class="number">1</span>]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> map = L.map(<span class="string">'map'</span>, &#123;</span><br><span class="line">    crs: crs,</span><br><span class="line">    center: [<span class="number">39.79</span>, <span class="number">116.85</span>],</span><br><span class="line">&#125;);</span><br><span class="line">L.supermap.tiledMapLayer(url).addTo(map);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>对于不支持或者用户自定义的投影，需要通过 <code>Proj4js.defs[]</code> 静态常量定义键值对实现。<code>Proj4js</code> 是一个投影相关的 JavaScript 脚本库，详细介绍请参见 Proj4js 官网: <a href="https://trac.osgeo.org/proj4js/" target="_blank" rel="noopener">https://trac.osgeo.org/proj4js/</a>。 </p>
+</blockquote>
+<p>目前 Proj4js 支持的坐标参考系有： </p>
+<img src="/2020/01/10/02.%20%E4%B8%BA%E5%9C%B0%E5%9B%BE%E8%AE%BE%E7%BD%AE%E6%8A%95%E5%BD%B1/1.png" class=""> 
+
+<p>一个简单的投影信息描述如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Proj4js.defs(<span class="string">"EPSG:21418"</span>,<span class="string">"+proj=tmerc +lat_0=0 +lon_0=105 +k=1 +x_0=18500000 +y_0=0 +ellps=krass +units=m +no_defs "</span>);</span><br></pre></td></tr></table></figure>
+
+<p>有关各种投影的参数定义，可参考 <a href="https://spatialreference.org/" target="_blank" rel="noopener">https://spatialreference.org</a>；如果已有定义，可搜索并查看其投影参数，例如 EPSG:21418，其投影参数为 <a href="https://spatialreference.org/ref/epsg/21418/proj4/" target="_blank" rel="noopener">https://spatialreference.org/ref/epsg/21418/proj4/</a></p>
+<p>对于用户自定义投影，可通过定义 <code>EPSG code</code> 和 <code>defs</code> 来创建投影，<code>defs</code> 内容为参考投影参数，其分别代表了名称、投影、转换到 WGS84 坐标系（三参数）、椭球长半轴、扁率、原点纬线、中央经线、两条标准纬线、东偏移量、北偏移量和单位等。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Proj4js.defs(<span class="string">"EPSG:10010"</span>,<span class="string">"+title=Beijing1954 +proj=lcc +towgs84=0.0000,0.0000,0.0000 +a=6378245.0000 +rf=298.3 +lat_0=0.00000000 +lon_0=104.000000000 +lat_1=24.000000000 +lat_2=40.000000000 +x_0=0.000 +y_0=0.000 +units=m +no_defs"</span>);</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>庸人不自扰</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2020/01/10/02.%20%E4%B8%BA%E5%9C%B0%E5%9B%BE%E8%AE%BE%E7%BD%AE%E6%8A%95%E5%BD%B1/">http://yoursite.com/2020/01/10/02.%20%E4%B8%BA%E5%9C%B0%E5%9B%BE%E8%AE%BE%E7%BD%AE%E6%8A%95%E5%BD%B1/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>天行健，君子以自强不息</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/SuperMap/"># SuperMap</a>
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/01/10/03.%20%E6%B7%BB%E5%8A%A0%E6%8E%A7%E4%BB%B6/">03. 添加控件</a>
+            
+            
+            <a class="next" rel="next" href="/2020/01/10/01.%20%E5%88%9B%E5%BB%BA%E4%B8%80%E5%B9%85%E5%9C%B0%E5%9B%BE/">01. 创建一幅地图</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 庸人不自扰 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>        
+</footer>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?61def953aa124497ee616cdacabb1116";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    </div>
+</body>
+</html>

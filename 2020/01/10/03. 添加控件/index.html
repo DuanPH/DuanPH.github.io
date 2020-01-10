@@ -16,7 +16,7 @@
 
 
 
-<title>Hello World | DPH Blog</title>
+<title>03. 添加控件 | DPH Blog</title>
 
 
 
@@ -178,7 +178,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title">03. 添加控件</h1>
             
                 <div class="post-meta">
                     
@@ -187,28 +187,36 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">一月 7, 2020&nbsp;&nbsp;15:16:08</a>
+                        Date: <a href="#">一月 10, 2020&nbsp;&nbsp;11:33:00</a>
                         </span>
                     
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/other/">其他</a>
+                            
+                        </span>
                     
                 </div>
             
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+            <hr>
+<p>通过向地图添加控件的方式，实现对图层的放大，缩小，图层切换等交互操作，常用的控件包括： </p>
+<img src="/2020/01/10/03.%20%E6%B7%BB%E5%8A%A0%E6%8E%A7%E4%BB%B6/1.png" class=""> 
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>添加控件时，首先初始化地图，然后通过 addTo() 方法将控件添加到地图上，例如： </p>
+<p>添加缩放控件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加控件</span></span><br><span class="line">L.control.zoom().addTo(map);</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>运行效果：</p>
+<img src="/2020/01/10/03.%20%E6%B7%BB%E5%8A%A0%E6%8E%A7%E4%BB%B6/2.png" class=""> 
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="图层切换控件"><a href="#图层切换控件" class="headerlink" title="图层切换控件"></a>图层切换控件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url =<span class="string">"https://iserver.supermap.io"</span>;</span><br><span class="line"><span class="keyword">var</span> China = L.supermap.tiledMapLayer(url + <span class="string">'/iserver/services/map-china400/rest/maps/China'</span>,&#123;<span class="attr">noWrap</span>:<span class="literal">true</span>&#125;);</span><br><span class="line"><span class="keyword">var</span> ChinaDark = L.supermap.tiledMapLayer(url + <span class="string">'/iserver/services/map-china400/rest/maps/ChinaDark'</span>, &#123;<span class="attr">noWrap</span>:<span class="literal">true</span>&#125;);</span><br><span class="line"><span class="comment">// 初始化地图</span></span><br><span class="line"><span class="keyword">var</span> map = L.map(<span class="string">'map'</span>, &#123;</span><br><span class="line">    center: [<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">    maxZoom: <span class="number">18</span>,</span><br><span class="line">    zoom: <span class="number">2</span>,</span><br><span class="line">    zoomControl: <span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// 设置图层数组</span></span><br><span class="line">    layers: [China]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> baseMaps = &#123; <span class="string">"China"</span>: China, <span class="string">"ChinaDark"</span>: ChinaDark &#125;;</span><br><span class="line"><span class="comment">// 添加图层切换控件</span></span><br><span class="line">L.control.layers(baseMaps).addTo(map);</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
         </div>
 
@@ -223,7 +231,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://yoursite.com/2020/01/07/hello-world/">http://yoursite.com/2020/01/07/hello-world/</a></span>
+                        <span><a href="http://yoursite.com/2020/01/10/03.%20%E6%B7%BB%E5%8A%A0%E6%8E%A7%E4%BB%B6/">http://yoursite.com/2020/01/10/03.%20%E6%B7%BB%E5%8A%A0%E6%8E%A7%E4%BB%B6/</a></span>
                     </p>
                 
                 
@@ -246,6 +254,12 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/SuperMap/"># SuperMap</a>
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
                 </span>
             </div>
             <div>
@@ -256,8 +270,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/01/10/SuperMap-%E5%88%9B%E5%BB%BA%E4%B8%80%E5%B9%85%E5%9C%B0%E5%9B%BE/">SuperMap-创建一幅地图</a>
+                <a class="prev" rel="prev" href="/2020/01/10/04.%20%E4%BD%BF%E7%94%A8%E7%9F%A2%E9%87%8F%E7%93%A6%E7%89%87/">04. 使用矢量瓦片</a>
             
+            
+            <a class="next" rel="next" href="/2020/01/10/02.%20%E4%B8%BA%E5%9C%B0%E5%9B%BE%E8%AE%BE%E7%BD%AE%E6%8A%95%E5%BD%B1/">02. 为地图设置投影</a>
             
         </section>
 

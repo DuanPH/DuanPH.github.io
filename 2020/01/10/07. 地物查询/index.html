@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="庸人不自扰">
+
+
+    <meta name="subtitle" content="DPH Blog">
+
+
+    <meta name="description" content="记录成长的瞬间">
+
+
+
+<title>07. 地物查询 | DPH Blog</title>
+
+
+
+    <link rel="icon" href="/myblog.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DPH Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DPH Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">07. 地物查询</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">庸人不自扰</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">一月 10, 2020&nbsp;&nbsp;11:34:23</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/other/">其他</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <hr>
+<h3 id="SuperMap-iClient-for-Leaflet-支持的地物查询功能主要包括："><a href="#SuperMap-iClient-for-Leaflet-支持的地物查询功能主要包括：" class="headerlink" title="SuperMap iClient for Leaflet 支持的地物查询功能主要包括："></a>SuperMap iClient for Leaflet 支持的地物查询功能主要包括：</h3><blockquote>
+<h6 id="指定ID查询"><a href="#指定ID查询" class="headerlink" title="指定ID查询"></a>指定ID查询</h6><h6 id="指定SQL查询"><a href="#指定SQL查询" class="headerlink" title="指定SQL查询"></a>指定SQL查询</h6><h6 id="矩形范围查询"><a href="#矩形范围查询" class="headerlink" title="矩形范围查询"></a>矩形范围查询</h6><h6 id="任意几何范围查询"><a href="#任意几何范围查询" class="headerlink" title="任意几何范围查询"></a>任意几何范围查询</h6><h6 id="距离查询"><a href="#距离查询" class="headerlink" title="距离查询"></a>距离查询</h6><h6 id="缓冲区查询"><a href="#缓冲区查询" class="headerlink" title="缓冲区查询"></a>缓冲区查询</h6><h6 id="查询栅格信息"><a href="#查询栅格信息" class="headerlink" title="查询栅格信息"></a>查询栅格信息</h6><h6 id="查询字段信息"><a href="#查询字段信息" class="headerlink" title="查询字段信息"></a>查询字段信息</h6></blockquote>
+<hr>
+<h3 id="指定ID查询-注解1"><a href="#指定ID查询-注解1" class="headerlink" title="指定ID查询[^注解1]"></a>指定ID查询[^注解1]</h3><p>使用接口 <code>L.supermap.featureService</code> 在数据集 <code>World:Countries</code> 中查询 ID 为 246 和 247 的地理空间要素。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数据集ID查询服务参数</span></span><br><span class="line"><span class="keyword">var</span> idsParam = <span class="keyword">new</span> SuperMap.GetFeaturesByIDsParameters(&#123;</span><br><span class="line">    IDs: [<span class="number">246</span>,<span class="number">247</span>],</span><br><span class="line">    datasetNames: [<span class="string">"world:Countries"</span>]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 创建指定ID查询实例</span></span><br><span class="line"><span class="keyword">var</span> url = <span class="string">"https://iserver.supermap.io/iserver/services/data-world/rest/data"</span>;</span><br><span class="line">L.supermap.featuresService(url).getFeaturesByIDs(idsParam,<span class="function"><span class="keyword">function</span> (<span class="params">serviceResult</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取服务器返回结果</span></span><br><span class="line">    <span class="keyword">var</span> featuers = serviceResult.result.features;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/07.%20%E5%9C%B0%E7%89%A9%E6%9F%A5%E8%AF%A2/1.png" class=""> 
+
+<hr>
+<h3 id="指定SQL查询-注解2"><a href="#指定SQL查询-注解2" class="headerlink" title="指定SQL查询[^注解2]"></a>指定SQL查询[^注解2]</h3><p>使用接口 <code>L.supermap.featureService</code> 在数据集 <code>World:Countries</code> 中查询 “SMID=247” 的矢量要素。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 指定SQL查询服务参数</span></span><br><span class="line"><span class="keyword">var</span> sqlParam = <span class="keyword">new</span> SuperMap.GetFeaturesBySQLParameters(&#123;</span><br><span class="line">    queryParameter: &#123;</span><br><span class="line">        name: <span class="string">"Countries@World"</span>,</span><br><span class="line">        attributeFilter: <span class="string">"SMID = 247"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    datasetNames: [<span class="string">"World:Countries"</span>]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 创建SQL查询实例</span></span><br><span class="line"><span class="keyword">var</span> url =  <span class="string">"https://iserver.supermap.io/iserver/services/data-world/rest/data"</span>;</span><br><span class="line">L.supermap.featureService(url).getFeaturesBySQL(sqlParam,<span class="function"><span class="keyword">function</span> (<span class="params">serviceResult</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取服务器返回的结果</span></span><br><span class="line">    <span class="keyword">var</span> featuers = serviceResult.result.features；</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/07.%20%E5%9C%B0%E7%89%A9%E6%9F%A5%E8%AF%A2/2.png" class=""> 
+
+<hr>
+<h3 id="矩形范围查询-注解3"><a href="#矩形范围查询-注解3" class="headerlink" title="矩形范围查询[^注解3]"></a>矩形范围查询[^注解3]</h3><p>使用接口 <code>L.supermap.featureService</code> 在数据集 <code>World:Capitals</code> 中查找符合此矩形范围的矢量要素。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url = <span class="string">"https://iserver.supermap.io/iserver/services/data-world/rest/data"</span>;</span><br><span class="line"><span class="comment">// 指定矩形范围查询处理</span></span><br><span class="line"><span class="keyword">var</span> polygon = L.polygon([[<span class="number">-20</span>, <span class="number">20</span>], [<span class="number">0</span>, <span class="number">20</span>], [<span class="number">0</span>, <span class="number">40</span>], [<span class="number">-20</span>, <span class="number">40</span>], [<span class="number">-20</span>, <span class="number">20</span>]], &#123;<span class="attr">color</span>: <span class="string">'red'</span>&#125;);</span><br><span class="line"><span class="comment">// 设置矩形范围查询参数</span></span><br><span class="line"><span class="keyword">var</span> boundsParam = <span class="keyword">new</span> SuperMap.GetFeaturesByBoundsParameters(&#123;</span><br><span class="line">    datasetNames: [<span class="string">"World:Capitals"</span>],</span><br><span class="line">    bounds: polygon.getBounds()</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 创建矩形范围查询实例</span></span><br><span class="line">L.supermap .featureService(url) .getFeaturesByBounds(boundsParam,<span class="function"><span class="keyword">function</span> (<span class="params">serviceResult</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取服务器返回的结果</span></span><br><span class="line">    <span class="keyword">var</span> featuers = serviceResult.result.features;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/07.%20%E5%9C%B0%E7%89%A9%E6%9F%A5%E8%AF%A2/3.png" class=""> 
+
+<hr>
+<h3 id="任意几何范围查询-注解4"><a href="#任意几何范围查询-注解4" class="headerlink" title="任意几何范围查询[^注解4]"></a>任意几何范围查询[^注解4]</h3><p>使用接口 <code>L.supermap.featureService</code> 在 <code>World:Countries</code> 数据集中采用相交空间查询模式查询符合此几何范围的矢量要素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url = <span class="string">"https://iserver.supermap.io/iserver/services/data-world/rest/data"</span>;</span><br><span class="line"><span class="comment">// 设置几何查询范围</span></span><br><span class="line"><span class="keyword">var</span> polygon = L.polygon([[<span class="number">0</span>, <span class="number">0</span>], [<span class="number">-30</span>, <span class="number">0</span>], [<span class="number">-10</span>, <span class="number">30</span>], [<span class="number">0</span>, <span class="number">0</span>]], &#123;<span class="attr">color</span>: <span class="string">'red'</span>&#125;);</span><br><span class="line"><span class="comment">// 设置任意几何范围查询参数</span></span><br><span class="line"><span class="keyword">var</span> geometryParam = <span class="keyword">new</span> SuperMap.GetFeaturesByGeometryParameters(&#123;</span><br><span class="line">    datasetNames: [<span class="string">"World:Countries"</span>],</span><br><span class="line">    geometry: polygon,</span><br><span class="line">    spatialQueryMode: <span class="string">"INTERSECT"</span> 		<span class="comment">// 相交空间查询模式</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 创建任意几何范围查询实例</span></span><br><span class="line">L.supermap .featureService(url) .getFeaturesByGeometry(geometryParam,<span class="function"><span class="keyword">function</span> (<span class="params">serviceResult</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取服务器返回的结果</span></span><br><span class="line">    <span class="keyword">var</span> featuers = serviceResult.result.features;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/07.%20%E5%9C%B0%E7%89%A9%E6%9F%A5%E8%AF%A2/4.png" class=""> 
+
+<hr>
+<h3 id="距离查询-注解5"><a href="#距离查询-注解5" class="headerlink" title="距离查询[^注解5]"></a>距离查询[^注解5]</h3><p>使用接口 <code>L.supermap.queryService</code> 在图层 <code>Capitals@World.1</code> 中查找距离指定点为10度（地图坐标单位）的矢量要素。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url = https:<span class="comment">//iserver.supermap.io/iserver/services/map-world/rest/maps/World";</span></span><br><span class="line"> <span class="comment">// 添加查询中心点</span></span><br><span class="line"><span class="keyword">var</span> circleMarker = L.circleMarker([<span class="number">30</span>, <span class="number">104</span>], &#123;<span class="attr">color</span>:<span class="string">'red'</span>&#125;)；</span><br><span class="line"><span class="comment">// 设置距离查询参数</span></span><br><span class="line"><span class="keyword">var</span> param = <span class="keyword">new</span> SuperMap.QueryByDistanceParameters(&#123;</span><br><span class="line">    queryParams: &#123;<span class="attr">name</span>: <span class="string">"Capitals@World.1"</span>&#125;,</span><br><span class="line">    distance: <span class="number">10</span>, <span class="comment">// distance的单位跟地物的坐标系单位一致，此处为度</span></span><br><span class="line">    geometry: circleMarker</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 创建距离查询实例</span></span><br><span class="line">L.supermap .queryService(url) .queryByDistance(param,<span class="function"><span class="keyword">function</span> (<span class="params">serviceResult</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取服务器返回的结果</span></span><br><span class="line">    <span class="keyword">var</span> featuers = serviceResult.result.features;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/07.%20%E5%9C%B0%E7%89%A9%E6%9F%A5%E8%AF%A2/5.png" class=""> 
+
+<hr>
+<h3 id="缓冲区查询-注解6"><a href="#缓冲区查询-注解6" class="headerlink" title="缓冲区查询[^注解6]"></a>缓冲区查询[^注解6]</h3><p>使用接口 <code>L.supermap.featureService</code> 在数据集 <code>World:Capitals</code> 中查找符合此缓冲区范围距离为10度（地图坐标单位）的矢量要素。   </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url = <span class="string">"https://iserver.supermap.io/iserver/services/data-world/rest/data"</span>;</span><br><span class="line"><span class="comment">// 设置缓冲区查询范围</span></span><br><span class="line"><span class="keyword">var</span> polygon = L.polygon([[<span class="number">-20</span>, <span class="number">20</span>], [<span class="number">0</span>, <span class="number">20</span>], [<span class="number">0</span>, <span class="number">40</span>], [<span class="number">-20</span>, <span class="number">40</span>], [<span class="number">-20</span>, <span class="number">20</span>]], &#123;<span class="attr">color</span>: <span class="string">'red'</span>&#125;);</span><br><span class="line"><span class="comment">// 设置缓冲区查询参数</span></span><br><span class="line"><span class="keyword">var</span> bufferParam = <span class="keyword">new</span> SuperMap.GetFeaturesByBufferParameters(&#123;</span><br><span class="line">    datasetNames: [<span class="string">"World:Capitals"</span>],</span><br><span class="line">    bufferDistance: <span class="number">10</span>, <span class="comment">// bufferDistance的单位跟地物的坐标系单位一致，此处为度</span></span><br><span class="line">    geometry:polygon</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 创建缓冲区查询实例，向服务器发送请求，并获取返回的结果</span></span><br><span class="line">L.supermap .featureService(url) .getFeaturesByBuffer(bufferParam,<span class="function"><span class="keyword">function</span> (<span class="params">serviceResult</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取服务器返回的结果</span></span><br><span class="line">    <span class="keyword">var</span> featuers = serviceResult.result.features;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/07.%20%E5%9C%B0%E7%89%A9%E6%9F%A5%E8%AF%A2/6.png" class=""> 
+
+<hr>
+<h3 id="查询栅格信息-注解7"><a href="#查询栅格信息-注解7" class="headerlink" title="查询栅格信息[^注解7]"></a>查询栅格信息[^注解7]</h3><p>使用接口 <code>L.supermap.gridCellInfosService</code> 在数据集 <code>WorldEarth</code> 中查询栅格信息为例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url = <span class="string">"https://iserver.supermap.io/iserver/services/data-world/rest/data"</span>;</span><br><span class="line">map.on(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span> (<span class="params">evt</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取当前点击的(x,y)</span></span><br><span class="line">    <span class="keyword">var</span> x = evt.latlng.lng;</span><br><span class="line">    <span class="keyword">var</span> y = evt.latlng.lat;</span><br><span class="line">    <span class="comment">// 设置栅格查询的参数信息</span></span><br><span class="line">    <span class="keyword">var</span> getGridCellInfosParam = <span class="keyword">new</span> SuperMap.GetGridCellInfosParameters(&#123;</span><br><span class="line">        dataSourceName: <span class="string">"World"</span>,</span><br><span class="line">        datasetName:<span class="string">"WorldEarth"</span>,</span><br><span class="line">        X: x,</span><br><span class="line">        Y: y</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// 创建栅格查询实例</span></span><br><span class="line">    L.supermap.gridCellInfosService(url).getGridCellInfos(getGridCellInfosParam,<span class="function"><span class="keyword">function</span>(<span class="params">serviceResult</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!serviceResult.result) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 获取服务端返回数据</span></span><br><span class="line">        <span class="keyword">var</span> result = serviceResult.result;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/07.%20%E5%9C%B0%E7%89%A9%E6%9F%A5%E8%AF%A2/7.png" class=""> 
+
+<hr>
+<h3 id="查询字段信息-注解8"><a href="#查询字段信息-注解8" class="headerlink" title="查询字段信息[^注解8]"></a>查询字段信息[^注解8]</h3><p>使用接口 <code>L.supermap.fieldService</code> 在数据集 <code>continent_T</code> 中查询字段为 “SmID” 的字段信息。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dataURL = <span class="string">"https://iserver.supermap.io/iserver/services/data-world/rest/data"</span></span><br><span class="line"><span class="comment">// 设置字段查询参数</span></span><br><span class="line"><span class="keyword">var</span> param = <span class="keyword">new</span> SuperMap.FieldParameters(&#123;</span><br><span class="line">    datasource: <span class="string">"World"</span>,</span><br><span class="line">    dataset: <span class="string">"continent_T"</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> fieldName = <span class="string">'SmID'</span>;</span><br><span class="line"><span class="comment">// 创建字段查询实例</span></span><br><span class="line">L.supermap.fieldService(dataURL).getFields(param,<span class="function"><span class="keyword">function</span> (<span class="params">serviceResult</span>) </span>&#123;</span><br><span class="line">    fieldStatistic(fieldName);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 查询指定字段</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fieldStatistic</span>(<span class="params">fieldName</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 设置查询指定字段参数</span></span><br><span class="line">    <span class="keyword">var</span> param = <span class="keyword">new</span> SuperMap.FieldStatisticsParameters(&#123;</span><br><span class="line">        datasource: currentData.dataSourceName,</span><br><span class="line">        dataset: currentData.dataSetName,</span><br><span class="line">        fieldName: fieldName,</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// 向服务端发送请求并获取数据</span></span><br><span class="line">    L.supermap.fieldService(dataURL).getFieldStatisticsInfo(param, <span class="function"><span class="keyword">function</span> (<span class="params">serviceResult</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 获取返回数据</span></span><br><span class="line">        <span class="keyword">var</span> result = serviceResult.result;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/07.%20%E5%9C%B0%E7%89%A9%E6%9F%A5%E8%AF%A2/8.png" class=""> 
+
+<hr>
+<h3 id="注释："><a href="#注释：" class="headerlink" title="注释："></a>注释：</h3><blockquote>
+<p>[^注解1]: 指定 ID 查询，即在数据集中查询符合指定 ID 的地理空间要素，并在客户端中展示出来。本示例为：在 World 数据服务中查询指定 ID 的要素。<br>[^注解2]: 指定 SQL 查询，即在指定数据集集合中查找符合 SQL 条件的矢量要素，并在客户端中展示出来。本示例为：在 World 数据服务中查询指定 SMID 的要素。<br>[^注解3]: 矩形范围查询，即在指定数据集集合中查找符合矩形范围的矢量要素，并在客户端中展示出来。本示例为：在 World 数据服务中查询指定矩形范围的要素。<br>[^注解4]: 几何范围查询，即在指定数据集集合中查找符合几何范围的矢量要素，并在客户端中展示出来。本示例为：在 World 数据服务中查询任意几何范围的要素。<br>[^注解5]: 距离查询，即在地图服务中的指定图层中查找符合一定距离的矢量要素，并在客户端中展示出来。本示例为：在 World 地图服务中查询符合距离的矢量要素。<br>[^注解6]: 缓冲区查询，即在数据服务中的指定数据集集合中查找符合缓冲区的矢量要素，并在客户端中展示出来。本示例为：在 World 数据服务中查询指定缓冲区的要素。<br>[^注解7]: 查询栅格信息，即在指定数据集集合中查找某一地理位置所对应的像素值信息，并在客户端中展示出来。<br>[^注解8]: 查询字段信息，即在指定数据集集合中查找符合查询字段信息的矢量要素，并在客户端中展示出来。本示例为：在 World 数据服务中查询指定字段的要素。</p>
+</blockquote>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>庸人不自扰</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2020/01/10/07.%20%E5%9C%B0%E7%89%A9%E6%9F%A5%E8%AF%A2/">http://yoursite.com/2020/01/10/07.%20%E5%9C%B0%E7%89%A9%E6%9F%A5%E8%AF%A2/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>天行健，君子以自强不息</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/SuperMap/"># SuperMap</a>
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/01/10/08.%20%E5%9C%B0%E7%89%A9%E7%BC%96%E8%BE%91/">08. 地物编辑</a>
+            
+            
+            <a class="next" rel="next" href="/2020/01/10/06.%20%E9%9D%A2%E7%A7%AF%E5%92%8C%E8%B7%9D%E7%A6%BB%E7%9A%84%E9%87%8F%E7%AE%97/">06. 面积和距离的量算</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 庸人不自扰 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>        
+</footer>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?61def953aa124497ee616cdacabb1116";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    </div>
+</body>
+</html>

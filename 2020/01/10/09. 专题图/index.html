@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="庸人不自扰">
+
+
+    <meta name="subtitle" content="DPH Blog">
+
+
+    <meta name="description" content="记录成长的瞬间">
+
+
+
+<title>09. 专题图 | DPH Blog</title>
+
+
+
+    <link rel="icon" href="/myblog.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DPH Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DPH Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">09. 专题图</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">庸人不自扰</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">一月 10, 2020&nbsp;&nbsp;11:34:41</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/other/">其他</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <hr>
+<blockquote>
+<p>地图学中将突出而深入地表示一种或几种要素或现象，即集中表示一个主题内容的地图称为专题地图。在 SuperMap 中，专题图是地图图层的符号化显示，即用各种图形渲染风格（大小，颜色，线型，填充等）来图形化地表现专题要素的某方面特征。专题图可以基于 GIS 客户端的 API 直接制作，也可以通过调用后台的地图服务由 GIS 服务器端制作。由服务器端制作专题图的方式，相对具有更高的性能，出图效率也更高；由客户端制作的专题图，则可以引入最新的前端技术，实现更直观漂亮的展示效果和交互效果。 </p>
+</blockquote>
+<hr>
+<h3 id="服务专题图-注释1"><a href="#服务专题图-注释1" class="headerlink" title="服务专题图^注释1"></a>服务专题图<a href="服务端专题图是由服务器进行专题图的制作，即客户端向服务器发送专题图参数，如数据集名称、风格等，服务器根据参数制作专题图，返回给客户端，由客户端进行展示。">^注释1</a></h3><p>以点密度专题图为例：</p>
+<p>点密度专题图用一定大小、形状相同的点表示现象分布范围、数量特征和分布密度。点的多少和所代表的意义由地图的内容决定。点密度专题图使用点的数目或者密集程度来反映一个区域或范围所对应的专题值。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url = <span class="string">"https://iserver.supermap.io/iserver/services/map-world/rest/maps/World"</span>;</span><br><span class="line"><span class="comment">// 获取专题图服务，url是地图访问服务</span></span><br><span class="line"><span class="keyword">var</span> themeService = L.supermap.ThemeService(url);</span><br><span class="line"><span class="comment">// 实例化一个点密度专题图对象，并对专题图作相应的设置</span></span><br><span class="line"><span class="keyword">var</span> themeDotDensity = <span class="keyword">new</span> SuperMap.ThemeDotDensity(&#123;</span><br><span class="line">    dotExpression:<span class="string">"Pop_1994"</span>,</span><br><span class="line">    value: <span class="number">5000000</span>,</span><br><span class="line">    style: <span class="keyword">new</span> SuperMap.ServerStyle(&#123;</span><br><span class="line">        markerSize: <span class="number">3</span>,</span><br><span class="line">        markerSymbolID: <span class="number">12</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 设置专题图参数类，该类存储了制作专题所需的参数，包括数据源、数据集名称和专题图对象。</span></span><br><span class="line">themeParameters =<span class="keyword">new</span> SuperMap.ThemeParameters(&#123;</span><br><span class="line">    themes: [themeDotDensity],</span><br><span class="line">    <span class="comment">// 要制作专题图的数据集数组,必设</span></span><br><span class="line">    datasetNames: [<span class="string">"Countries"</span>],</span><br><span class="line">    <span class="comment">// 要制作专题图的数据集所在的数据源数组，必设。</span></span><br><span class="line">    dataSourceNames: [<span class="string">"World"</span>] &#125;);</span><br><span class="line">    <span class="comment">// 提交服务请求，传递服务查询参数，获取专题图信息并按照用户需求进行处理</span></span><br><span class="line">    themeService.getThemeInfo(themeParameters,<span class="function"><span class="keyword">function</span> (<span class="params">serviceResult</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 获取服务器返回的结果</span></span><br><span class="line">        <span class="keyword">var</span> result = serviceResult.result;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/09.%20%E4%B8%93%E9%A2%98%E5%9B%BE/1.png" class=""> 
+
+<hr>
+<h3 id="客户端专题图-注释2"><a href="#客户端专题图-注释2" class="headerlink" title="客户端专题图^注释2"></a>客户端专题图<a href="客户端专题图是根据数据的形状和属性数据，在客户端进行相应计算，通过要素图层或任意图层赋予不同的绘制风格并在客户端进行专题图的展示。">^注释2</a></h3><h5 id="SuperMap-iClient-for-Leaflet-支持的专题图包含："><a href="#SuperMap-iClient-for-Leaflet-支持的专题图包含：" class="headerlink" title="SuperMap iClient for Leaflet 支持的专题图包含："></a>SuperMap iClient for Leaflet 支持的专题图包含：</h5><blockquote>
+<ul>
+<li>单值专题图</li>
+<li>分段专题图</li>
+<li>符号等级专题图</li>
+<li>标签专题图</li>
+<li>图表专题图</li>
+</ul>
+</blockquote>
+<h5 id="单值专题图-注释3"><a href="#单值专题图-注释3" class="headerlink" title="单值专题图^注释3"></a>单值专题图<a href="单值专题图是将专题值相同的要素归为一类，为每一类设定一种渲染风格，如颜色或符号等，专题值相同的要素采用相同的渲染风格，从而用来区分不同的类别。">^注释3</a></h5><p>SuperMap iClient for Leaflet 实现单值专题图，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建 Unique 单值专题图层</span></span><br><span class="line"><span class="keyword">var</span> themeLayer = L.supermap.uniqueThemeLayer(<span class="string">"ThemeLayer"</span>, &#123;</span><br><span class="line">    <span class="comment">// 开启 hover 高亮效果</span></span><br><span class="line">    isHoverAble: <span class="literal">true</span>,</span><br><span class="line">    opacity: <span class="number">0.8</span>,</span><br><span class="line">    alwaysMapCRS: <span class="literal">true</span></span><br><span class="line">&#125;).addTo(map);</span><br><span class="line"><span class="comment">// 图层基础样式</span></span><br><span class="line">themeLayer.style = <span class="keyword">new</span> SuperMap.ThemeStyle(&#123;</span><br><span class="line">    shadowBlur: <span class="number">3</span>,</span><br><span class="line">    shadowColor: <span class="string">"#000000"</span>,</span><br><span class="line">    shadowOffsetX: <span class="number">1</span>,</span><br><span class="line">    shadowOffsetY: <span class="number">1</span>,</span><br><span class="line">    fillColor: <span class="string">"#FFFFFF"</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// hover 高亮样式</span></span><br><span class="line">themeLayer.highlightStyle = <span class="keyword">new</span> SuperMap.ThemeStyle(&#123;</span><br><span class="line">    stroke: <span class="literal">true</span>,</span><br><span class="line">    strokeWidth: <span class="number">2</span>,</span><br><span class="line">    strokeColor: <span class="string">'blue'</span>,</span><br><span class="line">    fillColor: <span class="string">"#00F5FF"</span>,</span><br><span class="line">    fillOpacity: <span class="number">0.2</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 用于单值专题图的属性字段名称</span></span><br><span class="line">themeLayer.themeField = <span class="string">"LANDTYPE"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>单值专题图类型以及颜色的配置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单值专题类型样式组</span></span><br><span class="line">styleGroups: [</span><br><span class="line">    &#123;</span><br><span class="line">        value: <span class="string">"草地"</span>,</span><br><span class="line">        style: &#123;</span><br><span class="line">            fillColor: <span class="string">"#C1FFC1"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        value: <span class="string">"城市"</span>,</span><br><span class="line">        style: &#123;</span><br><span class="line">            fillColor: <span class="string">"#CD7054"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        value: <span class="string">"灌丛"</span>,</span><br><span class="line">        style: &#123;</span><br><span class="line">            fillColor: <span class="string">"#7CCD7C"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/09.%20%E4%B8%93%E9%A2%98%E5%9B%BE/2.png" class=""> 
+
+
+
+<h5 id="分段专题图-注释4"><a href="#分段专题图-注释4" class="headerlink" title="分段专题图[^注释4]"></a>分段专题图[^注释4]</h5><p>SuperMap iClient for Leaflet 实现分段专题图，主要代码如下： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义 rangeThemeLayer 分段专题图层</span></span><br><span class="line"><span class="keyword">var</span> themeLayer = L.supermap.rangeThemeLayer(<span class="string">"ThemeLayer"</span>, &#123;</span><br><span class="line">            <span class="comment">// 开启 hover 高亮效果</span></span><br><span class="line">            isHoverAble: <span class="literal">true</span>,</span><br><span class="line">            opacity: <span class="number">0.8</span>,</span><br><span class="line">            alwaysMapCRS: <span class="literal">true</span></span><br><span class="line">        &#125;).addTo(map);</span><br><span class="line">themeLayer.style = <span class="keyword">new</span> SuperMap.ThemeStyle(&#123;</span><br><span class="line">    shadowBlur: <span class="number">16</span>,</span><br><span class="line">    shadowColor: <span class="string">"#000000"</span>,</span><br><span class="line">    fillColor: <span class="string">"#FFFFFF"</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// hover 高亮样式</span></span><br><span class="line">themeLayer.highlightStyle = <span class="keyword">new</span> SuperMap.ThemeStyle(&#123;</span><br><span class="line">    stroke: <span class="literal">true</span>,</span><br><span class="line">    strokeWidth: <span class="number">4</span>,</span><br><span class="line">    strokeColor: <span class="string">'blue'</span>,</span><br><span class="line">    fillColor: <span class="string">"#00EEEE"</span>,</span><br><span class="line">    fillOpacity: <span class="number">0.8</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 用于单值专题图的属性字段名称</span></span><br><span class="line">themeLayer.themeField = <span class="string">"POP_DENSITY99"</span>;</span><br><span class="line"><span class="comment">// 风格数组，设定值对应的样式</span></span><br><span class="line">themeLayer.styleGroups = [&#123;</span><br><span class="line">    start: <span class="number">0</span>,</span><br><span class="line">    end: <span class="number">0.02</span>,</span><br><span class="line">    style: &#123;</span><br><span class="line">        color: <span class="string">'#FDE2CA'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;, &#123;</span><br><span class="line">    start: <span class="number">0.02</span>,</span><br><span class="line">    end: <span class="number">0.04</span>,</span><br><span class="line">    style: &#123;</span><br><span class="line">        color: <span class="string">'#FACE9C'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/09.%20%E4%B8%93%E9%A2%98%E5%9B%BE/3.png" class=""> 
+
+
+
+<h5 id="符号等级专题图-注释5"><a href="#符号等级专题图-注释5" class="headerlink" title="符号等级专题图[^注释5]"></a>符号等级专题图[^注释5]</h5><p>SuperMap iClient for Leaflet 实现符号等级专题图为例，主要代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个符号等级专题图层</span></span><br><span class="line"><span class="keyword">var</span> themeLayer = L.supermap.rankSymbolThemeLayer(<span class="string">"themeLayer"</span>, SuperMap.ChartType.CIRCLE);</span><br><span class="line"><span class="comment">// 指定用于专题图制作的属性字段  详看下面 addThemeLayer（）中的feature.attrs.CON2009</span></span><br><span class="line">themeLayer.themeField = <span class="string">"CON2009"</span>;</span><br><span class="line"><span class="comment">// 配置图表参数</span></span><br><span class="line">themeLayer.symbolSetting = &#123;</span><br><span class="line">    <span class="comment">// 允许图形展示的值域范围，此范围外的数据将不制作图图形,必设参数</span></span><br><span class="line">    codomain: [<span class="number">0</span>, <span class="number">40000</span>],</span><br><span class="line">    <span class="comment">// 圆最大半径 默认100</span></span><br><span class="line">    maxR: <span class="number">100</span>,</span><br><span class="line">    <span class="comment">// 圆最小半径 默认0</span></span><br><span class="line">    minR: <span class="number">0</span>,</span><br><span class="line">    <span class="comment">// 圆形样式</span></span><br><span class="line">    circleStyle: &#123;<span class="attr">fillOpacity</span>: <span class="number">0.8</span>&#125;,</span><br><span class="line">    <span class="comment">// 符号专题图填充颜色</span></span><br><span class="line">    fillColor: <span class="string">"#FFA500"</span>,</span><br><span class="line">    <span class="comment">// 专题图hover 样式</span></span><br><span class="line">    circleHoverStyle: &#123;<span class="attr">fillOpacity</span>: <span class="number">1</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line">themeLayer.addTo(map);</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/09.%20%E4%B8%93%E9%A2%98%E5%9B%BE/4.png" class=""> 
+
+
+
+<h5 id="标签专题图-注释6"><a href="#标签专题图-注释6" class="headerlink" title="标签专题图[^注释6]"></a>标签专题图[^注释6]</h5><p>SuperMap iClient for Leaflet 实现标签专题图，主要代码如下： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个标签专题图层</span></span><br><span class="line"><span class="keyword">var</span> themeLayer = L.supermap.labelThemeLayer(<span class="string">"ThemeLayer"</span>).addTo(map);</span><br><span class="line">themeLayer.style = <span class="keyword">new</span> SuperMap.ThemeStyle(&#123;</span><br><span class="line">    labelRect: <span class="literal">true</span>,</span><br><span class="line">    fontColor: <span class="string">"#000000"</span>,</span><br><span class="line">    fontWeight: <span class="string">"bolder"</span>,</span><br><span class="line">    fontSize: <span class="string">"18px"</span>,</span><br><span class="line">    fill: <span class="literal">true</span>,</span><br><span class="line">    fillColor: <span class="string">"#FFFFFF"</span>,</span><br><span class="line">    fillOpacity: <span class="number">1</span>,</span><br><span class="line">    stroke: <span class="literal">false</span>,</span><br><span class="line">    strokeColor: <span class="string">"#8B7B8B"</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 用于专题图的属性字段名称</span></span><br><span class="line">themeLayer.themeField = <span class="string">"aqi"</span>;</span><br><span class="line"><span class="comment">// 风格数组，设定值对应的样式</span></span><br><span class="line">themeLayer.styleGroups = [</span><br><span class="line">    &#123;</span><br><span class="line">        start: <span class="number">0</span>,</span><br><span class="line">        end: <span class="number">51</span>,</span><br><span class="line">        style: &#123;</span><br><span class="line">            fillColor: <span class="string">"#6ACD06"</span>,</span><br><span class="line">            fontSize: <span class="string">"17px"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        start: <span class="number">51</span>,</span><br><span class="line">        end: <span class="number">101</span>,</span><br><span class="line">        style: &#123;</span><br><span class="line">            fillColor: <span class="string">"#FBD12A"</span>,</span><br><span class="line">            fontSize: <span class="string">"19px"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/09.%20%E4%B8%93%E9%A2%98%E5%9B%BE/5.png" class=""> 
+
+
+
+<h5 id="图表专题图-注释7"><a href="#图表专题图-注释7" class="headerlink" title="图表专题图[^注释7]"></a>图表专题图[^注释7]</h5><p>SuperMap iClient for Leaflet 实现图表专题图，主要代码如下： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 柱状图和三维柱状图的图表配置</span></span><br><span class="line"><span class="keyword">var</span> chartsSettingForBarAddBar3DCommon = &#123;</span><br><span class="line">    width: <span class="number">260</span>,</span><br><span class="line">    height: <span class="number">120</span>,</span><br><span class="line">    codomain: [<span class="number">0</span>, <span class="number">40000</span>],   								<span class="comment">// 允许图表展示的值域范围，此范围外的数据将不制作图表</span></span><br><span class="line">    xShapeBlank: [<span class="number">15</span>, <span class="number">15</span>, <span class="number">15</span>],</span><br><span class="line">    axisYTick: <span class="number">4</span>,</span><br><span class="line">    axisYLabels: [<span class="string">"4万"</span>, <span class="string">"3万"</span>, <span class="string">"2万"</span>, <span class="string">"1万"</span>, <span class="string">"0"</span>],          <span class="comment">// y 轴标签内容</span></span><br><span class="line">    axisXLabels: [<span class="string">"09年"</span>, <span class="string">"10年"</span>, <span class="string">"11年"</span>, <span class="string">"12年"</span>, <span class="string">"13年"</span>],   <span class="comment">//  轴标签内容</span></span><br><span class="line">    backgroundRadius: [<span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>],</span><br><span class="line">    backgroundStyle: &#123;      							   <span class="comment">// 背景框圆角参数</span></span><br><span class="line">        fillColor: <span class="string">"#d1eeee"</span>,</span><br><span class="line">        shadowBlur: <span class="number">12</span>,</span><br><span class="line">        shadowColor: <span class="string">"#d1eeee"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 点和线的图表配置</span></span><br><span class="line"><span class="keyword">var</span> chartsSettingForPointOrLine = &#123;</span><br><span class="line">    width: <span class="number">220</span>,</span><br><span class="line">    height: <span class="number">100</span>,</span><br><span class="line">    codomain: [<span class="number">0</span>, <span class="number">40000</span>],</span><br><span class="line">    xShapeBlank: [<span class="number">10</span>, <span class="number">10</span>],</span><br><span class="line">    axisYTick: <span class="number">4</span>,</span><br><span class="line">    axisYLabels: [<span class="string">"4万"</span>, <span class="string">"3万"</span>, <span class="string">"2万"</span>, <span class="string">"1万"</span>, <span class="string">"0"</span>],</span><br><span class="line">    axisXLabels: [<span class="string">"09年"</span>, <span class="string">"10年"</span>, <span class="string">"11年"</span>, <span class="string">"12年"</span>, <span class="string">"13年"</span>],</span><br><span class="line">    backgroundStyle: &#123;<span class="attr">fillColor</span>: <span class="string">"#d1eeee"</span>&#125;,</span><br><span class="line">    backgroundRadius: [<span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>],</span><br><span class="line">    useXReferenceLine: <span class="literal">true</span>,</span><br><span class="line">    pointStyle: &#123;</span><br><span class="line">        pointRadius: <span class="number">5</span>,</span><br><span class="line">        shadowBlur: <span class="number">12</span>,</span><br><span class="line">        shadowColor: <span class="string">"#D8361B"</span>,</span><br><span class="line">        fillOpacity: <span class="number">0.8</span></span><br><span class="line">    &#125;,</span><br><span class="line">    pointHoverStyle: &#123;</span><br><span class="line">        stroke: <span class="literal">true</span>,</span><br><span class="line">        strokeColor: <span class="string">"#D8361B"</span>,</span><br><span class="line">        strokeWidth: <span class="number">2</span>,</span><br><span class="line">        fillColor: <span class="string">"#ffffff"</span>,</span><br><span class="line">        pointRadius: <span class="number">4</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 饼状图和环状图的图表配置</span></span><br><span class="line"><span class="keyword">var</span> chartsSettingForPieOrRing = &#123;</span><br><span class="line">    width: <span class="number">240</span>,</span><br><span class="line">    height: <span class="number">100</span>,</span><br><span class="line">    codomain: [<span class="number">0</span>, <span class="number">40000</span>],       		  <span class="comment">// 允许图表展示的值域范围，此范围外的数据将不制作图表</span></span><br><span class="line">    sectorStyle: &#123;<span class="attr">fillOpacity</span>: <span class="number">0.8</span>&#125;,      <span class="comment">// 柱状图中柱条的（表示字段值的图形）样式</span></span><br><span class="line">    sectorStyleByFields: [</span><br><span class="line">        &#123;<span class="attr">fillColor</span>: <span class="string">"#FFB980"</span>&#125;,</span><br><span class="line">        &#123;<span class="attr">fillColor</span>: <span class="string">"#5AB1EF"</span>&#125;,</span><br><span class="line">        &#123;<span class="attr">fillColor</span>: <span class="string">"#B6A2DE"</span>&#125;,</span><br><span class="line">        &#123;<span class="attr">fillColor</span>: <span class="string">"#2EC7C9"</span>&#125;,</span><br><span class="line">        &#123;<span class="attr">fillColor</span>: <span class="string">"#D87A80"</span>&#125;],</span><br><span class="line">    sectorHoverStyle: &#123;<span class="attr">fillOpacity</span>: <span class="number">1</span>&#125;,</span><br><span class="line">    xShapeBlank: [<span class="number">10</span>, <span class="number">10</span>, <span class="number">10</span>],      						<span class="comment">// 水平方向上的空白间距参数</span></span><br><span class="line">    axisYLabels: [<span class="string">"4万"</span>, <span class="string">"3万"</span>, <span class="string">"2万"</span>, <span class="string">"1万"</span>, <span class="string">"0"</span>],          <span class="comment">// y 轴标签内容</span></span><br><span class="line">    axisXLabels: [<span class="string">"09年"</span>, <span class="string">"10年"</span>, <span class="string">"11年"</span>, <span class="string">"12年"</span>, <span class="string">"13年"</span>],   <span class="comment">// x 轴标签内容</span></span><br><span class="line">    backgroundStyle: &#123;<span class="attr">fillColor</span>: <span class="string">"#CCE8CF"</span>&#125;,        	   <span class="comment">// 背景样式</span></span><br><span class="line">    backgroundRadius: [<span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>],        				   <span class="comment">// 背景框圆角参数</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 设置graphThemeLayer option参数</span></span><br><span class="line"><span class="keyword">var</span> themeLayerOptions = &#123;</span><br><span class="line">    map: map,</span><br><span class="line">    attributions: <span class="string">" "</span>,</span><br><span class="line">    themeFields: [<span class="string">"CON2009"</span>, <span class="string">"CON2010"</span>, <span class="string">"CON2011"</span>, <span class="string">"CON2012"</span>, <span class="string">"CON2013"</span>],</span><br><span class="line">    opacity: <span class="number">0.9</span>,</span><br><span class="line">    chartsSetting: &#123;&#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 创建一个图表专题图层</span></span><br><span class="line"><span class="keyword">var</span> themeLayer = L.supermap.graphThemeLayer(<span class="string">"BarLayer"</span>, <span class="string">"Bar"</span>, themeLayerOptions);</span><br><span class="line">map.addLayer(themeLayer);</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/09.%20%E4%B8%93%E9%A2%98%E5%9B%BE/6.png" class=""> 
+
+<img src="/2020/01/10/09.%20%E4%B8%93%E9%A2%98%E5%9B%BE/7.png" class=""> 
+
+<img src="/2020/01/10/09.%20%E4%B8%93%E9%A2%98%E5%9B%BE/8.png" class=""> 
+
+<img src="/2020/01/10/09.%20%E4%B8%93%E9%A2%98%E5%9B%BE/9.png" class=""> 
+
+<img src="/2020/01/10/09.%20%E4%B8%93%E9%A2%98%E5%9B%BE/10.png" class="">
+
+<img src="/2020/01/10/09.%20%E4%B8%93%E9%A2%98%E5%9B%BE/11.png" class="">
+
+<hr>
+<h3 id="注释："><a href="#注释：" class="headerlink" title="注释："></a>注释：</h3><blockquote>
+<p>[^注释4]: 分段专题图是指按照某种分段方式被分成多个范围段，要素根据各自的专题值被分配到其中一个范围段中，在同一个范围段中的要素使用相同的颜色，填充，符号等风格进行显示。 分段专题图所基于的专题变量必须为数值型，分段专题图一般用来反映连续分布现象的数量或程度特征，如降水量的分布，土壤侵蚀强度的分布等。<br>[^注释5]: 符号等级专题图根据各要素的某个数量特征，按照一定的分类方法用一组等级符号表示在地图上，以呈现要素间该数量特征的相对关系。<br>[^注释6]: 地图上的必要的标注是必不可少的，不仅帮助用户更好的区分地物要素，同时也显示了要素的某些重要属性，如行政区划、河流、机关、旅游景点的名称、等高线的高程等。在SuperMap 中，通过制作标签专题图，用户可以轻松的实现地图标注。<br>[^注释7]: 图表专题图是通过为每个要素或记录绘制统计图来反映其对应的专题值的大小。图表专题图可以基于多个变量，反映多种属性，即可以将多个专题值绘制在一个统计图上。通过统计专题图可以在区域本身与各区域之间形成横向和纵向的对比。多用于具有相关数量特征的地图上，比如表示不同地区多年的粮食产量、GDP、人口等，不同时段客运量、地铁流量等。在图表专题图中，每个区域都会有一幅表示该区域各专题值的统计图，专题图有多种表现形式，目前提供的类型有：柱状图，折线图，三维柱状图，折线图，点状图，饼图，环装图，三维饼图，玫瑰图，三维玫瑰图，环状图。 </p>
+</blockquote>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>庸人不自扰</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2020/01/10/09.%20%E4%B8%93%E9%A2%98%E5%9B%BE/">http://yoursite.com/2020/01/10/09.%20%E4%B8%93%E9%A2%98%E5%9B%BE/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>天行健，君子以自强不息</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/SuperMap/"># SuperMap</a>
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/01/10/10.%20%E7%A9%BA%E9%97%B4%E5%88%86%E6%9E%90/">10. 空间分析</a>
+            
+            
+            <a class="next" rel="next" href="/2020/01/10/08.%20%E5%9C%B0%E7%89%A9%E7%BC%96%E8%BE%91/">08. 地物编辑</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 庸人不自扰 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>        
+</footer>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?61def953aa124497ee616cdacabb1116";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    </div>
+</body>
+</html>

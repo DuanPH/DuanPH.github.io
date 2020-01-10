@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="庸人不自扰">
+
+
+    <meta name="subtitle" content="DPH Blog">
+
+
+    <meta name="description" content="记录成长的瞬间">
+
+
+
+<title>12. 网络分析 | DPH Blog</title>
+
+
+
+    <link rel="icon" href="/myblog.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DPH Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DPH Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">归档</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">12. 网络分析</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">庸人不自扰</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">一月 10, 2020&nbsp;&nbsp;11:35:24</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/other/">其他</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <hr>
+<h3 id="SuperMap-iClient-for-Leaflet-支持的网络分析主要包含："><a href="#SuperMap-iClient-for-Leaflet-支持的网络分析主要包含：" class="headerlink" title="SuperMap iClient for Leaflet 支持的网络分析主要包含："></a>SuperMap iClient for Leaflet 支持的网络分析主要包含：</h3><blockquote>
+<ul>
+<li>服务区分析</li>
+<li>查找最近设施</li>
+<li>选址分区分析</li>
+<li>多旅行商分析/物流配送</li>
+<li>最佳路径分析</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="服务区分析-注释1"><a href="#服务区分析-注释1" class="headerlink" title="服务区分析[^注释1]"></a>服务区分析[^注释1]</h3><p>下面以长春数据为例，然后在地图中选择将要分析的服务中心点（支持多中心），根据选择服务中心点的顺序依次按照 400、500、600…递增的数值作为服务半径进行缓冲区分析。即第一个服务中心点的服务半径为400，第二个服务中心点的服务半径为 500，依次类推。 </p>
+<p>服务区分析接口使用方法：</p>
+<p>设置服务区分析参数 <code>findServiceAreasParams</code>，包括网络分析通用参数、途径站点等。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加中心点</span></span><br><span class="line"><span class="keyword">var</span> marker = L.marker([<span class="number">-3375</span>, <span class="number">5605</span>]);</span><br><span class="line"><span class="comment">// 网络分析结果参数</span></span><br><span class="line"><span class="keyword">var</span> resultSetting = <span class="keyword">new</span> SuperMap.TransportationAnalystResultSetting(&#123;</span><br><span class="line">		<span class="comment">// 是否在分析结果中包含弧段要素集合</span></span><br><span class="line">		returnEdgeFeatures: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的弧段要素集合中是否包含集合对象信息</span></span><br><span class="line">		returnEdgeGeometry: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的结果中是否包含经过弧段ID集合</span></span><br><span class="line">		returnEdgeIDs: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的分析结果总是否包含结点要素集合</span></span><br><span class="line">		returnNodeFeatures: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的结点要素集合中是否包含集合对象信息</span></span><br><span class="line">		returnNodeGeometry: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的分析结果中是否包含经过结点ID集合</span></span><br><span class="line">		returnNodeIDs: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回分析结果中是否包含行驶导引集合</span></span><br><span class="line">		returnPathGuides: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回结果中是否包含路由对象集合</span></span><br><span class="line">		returnRoutes: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 网络分析通用参数</span></span><br><span class="line"><span class="keyword">var</span> analystParameter = <span class="keyword">new</span> SuperMap.TransportationAnalystParameter(&#123;</span><br><span class="line">		<span class="comment">// 分析结果返回的内容</span></span><br><span class="line">		resultSetting: resultSetting,</span><br><span class="line">		<span class="comment">// 阻力字段的名称</span></span><br><span class="line">		weightFieldName: <span class="string">"length"</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 服务区分析参数</span></span><br><span class="line"><span class="keyword">var</span> findServiceAreasParams = <span class="keyword">new</span> SuperMap.FindServiceAreasParameters(&#123;</span><br><span class="line">		<span class="comment">// 服务站点数组</span></span><br><span class="line">		centers: [marker.getLatLng()],</span><br><span class="line">		<span class="comment">// 是否通过节点ID指定路径分析的结点</span></span><br><span class="line">		isAnalyzeById: <span class="literal">false</span>,</span><br><span class="line">		<span class="comment">// 交通网络分析通用参数。</span></span><br><span class="line">		parameter: analystParameter,</span><br><span class="line">		<span class="comment">// 每个服务站点提供服务的阻力半径</span></span><br><span class="line">		weights: weightsArray</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>定义服务区分析服务对象，用于将客户端设置的服务区分析服务参数 <code>findServiceAreasParams</code> 传递给服务端， 并接收服务端返回的动态分段分析结果数据。当向服务端发送请求并且服务端成功返回结果时，用户可对获得的服务区分析结果做相应处理。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义服务区分析服务</span></span><br><span class="line"><span class="keyword">var</span> serviceUrl = <span class="string">"https://iserver.supermap.io/iserver/services/transportationanalyst-sample/rest/networkanalyst/RoadNet@Changchun"</span>;</span><br><span class="line"><span class="comment">// 创建服务区分析服务实例</span></span><br><span class="line"><span class="keyword">var</span> service = L.supermap.networkAnalystService(serviceUrl);</span><br><span class="line"><span class="comment">// 向服务器发送请求，并获取返回的结果</span></span><br><span class="line">service.findServiceAreas(findServiceAreasParams, <span class="function"><span class="keyword">function</span> (<span class="params">serviceResult</span>) </span>&#123;</span><br><span class="line">		<span class="comment">// 获取服务器返回的结果</span></span><br><span class="line">		<span class="keyword">var</span> result = serviceResult.result;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/12.%20%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/1.png" class=""> 
+
+<hr>
+<h3 id="查找最近设施-注释2"><a href="#查找最近设施-注释2" class="headerlink" title="查找最近设施[^注释2]"></a>查找最近设施[^注释2]</h3><p>下面以长春数据为例，在地图上标记事故事件点，然后针对三个医院进行最近设施查找分析，其接口使用方法如下所示：</p>
+<p>设置最近设施分析参数，包括交通网络分析通用参数、事件点、设施点、查找半径等。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置网络分析结果参数</span></span><br><span class="line"><span class="keyword">var</span> resultSetting = <span class="keyword">new</span> SuperMap.TransportationAnalystResultSetting(&#123;</span><br><span class="line">		<span class="comment">// 是否在分析结果中包含弧段要素集合</span></span><br><span class="line">		returnEdgeFeatures: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的弧段要素集合中是否包含集合对象信息</span></span><br><span class="line">		returnEdgeGeometry: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的结果中是否包含经过弧段ID集合</span></span><br><span class="line">		returnEdgeIDs: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的分析结果总是否包含结点要素集合</span></span><br><span class="line">		returnNodeFeatures: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的结点要素集合中是否包含集合对象信息</span></span><br><span class="line">		returnNodeGeometry: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的分析结果中是否包含经过结点ID集合</span></span><br><span class="line">		returnNodeIDs: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回分析结果中是否包含行驶导引集合</span></span><br><span class="line">		returnPathGuides: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回结果中是否包含路由对象集合</span></span><br><span class="line">		returnRoutes: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 设置交通网络分析通用参数</span></span><br><span class="line"><span class="keyword">var</span> analystParameter = <span class="keyword">new</span> SuperMap.TransportationAnalystParameter(&#123;</span><br><span class="line">		<span class="comment">// 分析结果返回内容</span></span><br><span class="line">		resultSetting: resultSetting,</span><br><span class="line">		<span class="comment">// 转向权重字段的名称</span></span><br><span class="line">		turnWeightField: <span class="string">"TurnCost"</span>,</span><br><span class="line">		<span class="comment">// 阻力字段的名称</span></span><br><span class="line">		weightFieldName: <span class="string">"length"</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 设置最近设施分析参数</span></span><br><span class="line"><span class="keyword">var</span> findClosetFacilitiesParams = <span class="keyword">new</span> SuperMap.FindClosestFacilitiesParameters(&#123;</span><br><span class="line">		<span class="comment">// 事件点，一般为需要获得服务设施服务的事件位置</span></span><br><span class="line">		event: L.latLng(<span class="number">-3700</span>, <span class="number">5000</span>),</span><br><span class="line">		<span class="comment">// 要查找的设施点数量</span></span><br><span class="line">		expectFacilityCount: <span class="number">1</span>,</span><br><span class="line">		<span class="comment">// 设施点集合，一般为提供服务的服务设施位置</span></span><br><span class="line">		facilities: [L.latLng(<span class="number">-3500</span>, <span class="number">2500</span>), L.latLng(<span class="number">-2500</span>, <span class="number">5500</span>), L.latLng(<span class="number">-4000</span>, <span class="number">7000</span>)],</span><br><span class="line">		<span class="comment">// 事件点和设施点是否通过节点ID号来指定</span></span><br><span class="line">		isAnalyzeById: <span class="literal">false</span>,</span><br><span class="line">		<span class="comment">// 交通网络分析通用参数</span></span><br><span class="line">		parameter: analystParameter</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>定义最近设施分析对象，用于将客户端设置的最近设施查找分析服务参数传递给服务端， 并接收服务端返回的最近设施分析结果。当向服务端发送请求并且服务端成功返回结果时，用户可对获得的最近设施分析结果做相应处理。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建最近设施分析服务实例</span></span><br><span class="line"><span class="keyword">var</span> serviceUrl = <span class="string">"https://iserver.supermap.io/iserver/services/transportationanalyst-sample/rest/networkanalyst/RoadNet@Changchun"</span>;</span><br><span class="line"><span class="keyword">var</span> findClosetFacilitiesService = L.supermap.networkAnalystService(serviceUrl);</span><br><span class="line"><span class="comment">// 向服务端发送请求，并返回结果进行处理</span></span><br><span class="line">findClosetFacilitiesService.findClosestFacilities(findClosetFacilitiesParams, <span class="function"><span class="keyword">function</span> (<span class="params">serviceResult</span>) </span>&#123;</span><br><span class="line">		<span class="comment">// 获取服务器返回的结果</span></span><br><span class="line">		<span class="keyword">var</span> result = serviceResult.result;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/12.%20%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/2.png" class=""> 
+
+<hr>
+<h3 id="选址分区分析-注释3"><a href="#选址分区分析-注释3" class="headerlink" title="选址分区分析[^注释3]"></a>选址分区分析[^注释3]</h3><p>设置选址分区分析参数，包括交通网络分析通用参数、途径站点等。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置设施点的资源供给中心</span></span><br><span class="line"><span class="keyword">var</span> supplyCenterType_FIXEDCENTER = SuperMap.SupplyCenterType.FIXEDCENTER;</span><br><span class="line"><span class="keyword">var</span> supplyCenterType_NULL = SuperMap.SupplyCenterType.NULL;</span><br><span class="line"><span class="keyword">var</span> supplyCenterType_OPTIONALCENTER = SuperMap.SupplyCenterType.OPTIONALCENTER;</span><br><span class="line"><span class="comment">// 以一个中心点为例</span></span><br><span class="line"><span class="keyword">var</span> supplyCenters = [<span class="keyword">new</span> SuperMap.SupplyCenter(&#123;</span><br><span class="line">		maxWeight: <span class="number">500</span>,             <span class="comment">// 资源供给中心的最大耗费值,必设参数</span></span><br><span class="line">		nodeID: <span class="number">139</span>,                <span class="comment">// 资源供给中心点的结点 ID 号,必设参数</span></span><br><span class="line">		resourceValue: <span class="number">100</span>,         <span class="comment">// 资源供给中心能提供的最大服务量或商品数量,必设参数</span></span><br><span class="line">		type: supplyCenterType_OPTIONALCENTER      <span class="comment">//选址分区中资源中心的类型包括固定中心和可选中心两种</span></span><br><span class="line">&#125;)];</span><br><span class="line"><span class="comment">// 设置选址分区分析参数</span></span><br><span class="line">findLocationParameter = <span class="keyword">new</span> SuperMap.FindLocationParameters(&#123;</span><br><span class="line">		<span class="comment">// 期望用于最终设施选址的资源供给中心数量,必设字段</span></span><br><span class="line">		expectedSupplyCenterCount: <span class="number">8</span>,</span><br><span class="line">		<span class="comment">// 是否从中心点开始分配资源。默认为 false</span></span><br><span class="line">		isFromCenter: <span class="literal">false</span>,</span><br><span class="line">		nodeDemandField: <span class="string">"Demand"</span>,</span><br><span class="line">		<span class="comment">// 转向权值字段的名称</span></span><br><span class="line">		turnWeightField: <span class="string">"TurnCost"</span>,</span><br><span class="line">		<span class="comment">// 阻力字段的名称, 必设</span></span><br><span class="line">		weightName: <span class="string">"length"</span>,</span><br><span class="line">		<span class="comment">// 资源供给中心集合,必设字段</span></span><br><span class="line">		supplyCenters: supplyCenters</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>定义选址分区分析服务对象，用于将客户端设置的选址分区分析服务参数传递给服务端，并接收服务端返回的动态分段分析结果数据。当向服务端发送请求并且服务端成功返回结果时，用户可对获得的选址分区分析结果做相应处理。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建选址分区分析服务实例</span></span><br><span class="line"><span class="keyword">var</span> serviceUrl = <span class="string">"https://iserver.supermap.io/iserver/services/transportationanalyst-sample/rest/networkanalyst/RoadNet@Changchun"</span>;</span><br><span class="line"><span class="keyword">var</span> findLocationService = L.supermap.networkAnalystService(serviceUrl);</span><br><span class="line"><span class="comment">// 向服务端发送请求，并对返回结果进行处理</span></span><br><span class="line">findLocationService.findLocation(findLocationParams, <span class="function"><span class="keyword">function</span> (<span class="params">serviceResult</span>) </span>&#123;</span><br><span class="line">		<span class="comment">// 获取服务器返回的结果</span></span><br><span class="line">		<span class="keyword">var</span> result = serviceResult.result;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/12.%20%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/3.png" class=""> 
+
+<hr>
+<h3 id="多旅行商分析-物流配送-注释4"><a href="#多旅行商分析-物流配送-注释4" class="headerlink" title="多旅行商分析/物流配送[^注释4]"></a>多旅行商分析/物流配送[^注释4]</h3><p>下面以长春数据为例，利用多旅行商分析和旅行商分析对食品厂各个仓库配送中心到用户指定的零售站的配送路线进行分析，并且给出质检员定期到各个零售站检查货品情况时所走的花费最小的路线，其接口使用方法如下所示：</p>
+<p>设置多旅行商分析参数 <code>findMTSPPathsParams</code>，包括交通网络分析通用参数、配送中心点集合、配送目标点集合、配送模式等。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 交通网络分析结果参数</span></span><br><span class="line"><span class="keyword">var</span> resultSetting = <span class="keyword">new</span> SuperMap.TransportationAnalystResultSetting(&#123;</span><br><span class="line">		<span class="comment">// 是否在分析结果中包含弧段要素集合</span></span><br><span class="line">		returnEdgeFeatures: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的弧段要素集合中是否包含集合对象信息</span></span><br><span class="line">		returnEdgeGeometry: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的结果中是否包含经过弧段ID集合</span></span><br><span class="line">		returnEdgeIDs: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的分析结果总是否包含结点要素集合</span></span><br><span class="line">		returnNodeFeatures: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的结点要素集合中是否包含集合对象信息</span></span><br><span class="line">		returnNodeGeometry: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的分析结果中是否包含经过结点ID集合</span></span><br><span class="line">		returnNodeIDs: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回分析结果中是否包含行驶导引集合</span></span><br><span class="line">		returnPathGuides: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回结果中是否包含路由对象集合</span></span><br><span class="line">		returnRoutes: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 交通网络分析通用参数</span></span><br><span class="line"><span class="keyword">var</span> analystParameter = <span class="keyword">new</span> SuperMap.TransportationAnalystParameter(&#123;</span><br><span class="line">		<span class="comment">// 分析结果返回的内容</span></span><br><span class="line">		resultSetting: resultSetting,</span><br><span class="line">		<span class="comment">// 阻力字段的名称</span></span><br><span class="line">		weightFieldName: <span class="string">"length"</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 多旅行商分析参数</span></span><br><span class="line"><span class="keyword">var</span> findMTSPPathsParams = <span class="keyword">new</span> SuperMap.FindMTSPPathsParameters(&#123;</span><br><span class="line">		<span class="comment">// 配送中心集合</span></span><br><span class="line">		centers: [L.latLng(<span class="number">-5500</span>, <span class="number">6000</span>), L.latLng(<span class="number">-2500</span>, <span class="number">5500</span>), L.latLng(<span class="number">-3500</span>, <span class="number">2500</span>)],</span><br><span class="line">		<span class="comment">// 是否通过节点ID号来指定配送中心点和配送目的点</span></span><br><span class="line">		isAnalyzeById: <span class="literal">false</span>,</span><br><span class="line">		<span class="comment">// 配送目标集合</span></span><br><span class="line">		nodes: [L.latLng(<span class="number">-5000</span>, <span class="number">5000</span>), L.latLng(<span class="number">-2800</span>, <span class="number">8000</span>)],</span><br><span class="line">		<span class="comment">// 配送模式是否为总花费最小方案</span></span><br><span class="line">		hasLeastTotalCost: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 交通网络分析通用参数</span></span><br><span class="line">		parameter: analystParameter</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>通过向服务端提交物流配送分析的请求参数，待服务端成功处理并返回分析处理结果后对其进行解析，获得由配送中心依次向各个配送目的地配送货物的最佳路径。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建多旅行商分析服务实例</span></span><br><span class="line"><span class="keyword">var</span> serviceUrl = <span class="string">"https://iserver.supermap.io/iserver/services/transportationanalyst-sample/rest/networkanalyst/RoadNet@Changchun"</span>;</span><br><span class="line"><span class="keyword">var</span> findMTSPPathsService = L.supermap.networkAnalystService(serviceUrl);</span><br><span class="line"><span class="comment">// 向服务器发送请求，并对返回结果进行处理</span></span><br><span class="line">findMTSPPathsService.findMTSPPaths(findMTSPPathsParams, <span class="function"><span class="keyword">function</span> (<span class="params">serviceResult</span>) </span>&#123;</span><br><span class="line">		<span class="comment">// 获取服务器返回的结果</span></span><br><span class="line">		<span class="keyword">var</span> result = serviceResult.result;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/12.%20%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/4.png" class=""> 
+
+<hr>
+<h3 id="最佳路径分析-注释5"><a href="#最佳路径分析-注释5" class="headerlink" title="最佳路径分析[^注释5]"></a>最佳路径分析[^注释5]</h3><p>下面以长春数据为例，计算地图中将要行走的地点间的最佳路径。其接口使用方法如下：</p>
+<p>设置最佳路径分析参数 <code>findPathParams</code>，包括交通网络分析通用参数、途径站点等。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 网络分析结果参数</span></span><br><span class="line"><span class="keyword">var</span> resultSetting = <span class="keyword">new</span> SuperMap.TransportationAnalystResultSetting(&#123;</span><br><span class="line">		<span class="comment">// 是否在分析结果中包含弧段要素集合</span></span><br><span class="line">		returnEdgeFeatures: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的弧段要素集合中是否包含集合对象信息</span></span><br><span class="line">		returnEdgeGeometry: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的结果中是否包含经过弧段ID集合</span></span><br><span class="line">		returnEdgeIDs: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的分析结果总是否包含结点要素集合</span></span><br><span class="line">		returnNodeFeatures: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的结点要素集合中是否包含集合对象信息</span></span><br><span class="line">		returnNodeGeometry: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回的分析结果中是否包含经过结点ID集合</span></span><br><span class="line">		returnNodeIDs: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回分析结果中是否包含行驶导引集合</span></span><br><span class="line">		returnPathGuides: <span class="literal">true</span>,</span><br><span class="line">		<span class="comment">// 返回结果中是否包含路由对象集合</span></span><br><span class="line">		returnRoutes: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 网络分析通用参数</span></span><br><span class="line"><span class="keyword">var</span> analystParameter = <span class="keyword">new</span> SuperMap.TransportationAnalystParameter(&#123;</span><br><span class="line">		<span class="comment">// 分析结果返回的内容</span></span><br><span class="line">		resultSetting: resultSetting,</span><br><span class="line">		<span class="comment">// 阻力字段的名称</span></span><br><span class="line">		weightFieldName: <span class="string">"length"</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 最佳路径分析参数</span></span><br><span class="line"><span class="keyword">var</span> findPathParams = <span class="keyword">new</span> SuperMap.FindPathParameters(&#123;</span><br><span class="line">		<span class="comment">// 是否通过结点ID指定路径分析的结点</span></span><br><span class="line">		isAnalyzeById: <span class="literal">false</span>,</span><br><span class="line">		<span class="comment">// 最佳路径分析经过的结点或设施点数组</span></span><br><span class="line">		nodes: [L.latLng(<span class="number">-3000</span>, <span class="number">4000</span>), L.latLng(<span class="number">-2500</span>, <span class="number">5500</span>), L.latLng(<span class="number">-4000</span>, <span class="number">6900</span>)],</span><br><span class="line">		<span class="comment">// 是否按照弧段数最少的进行最佳路径分析</span></span><br><span class="line">		hasLeastEdgeCount: <span class="literal">false</span>,</span><br><span class="line">		<span class="comment">// 交通网络分析通用参数</span></span><br><span class="line">		parameter: analystParameter</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>向服务端提交最佳路径分析的请求，待服务端成功处理并返回最佳路径分析结果 <code>serviceResult</code> 对其进行解析，将行驶路线在地图中展现出来并给出行驶导引信息。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建最佳路径分析实例</span></span><br><span class="line"><span class="keyword">var</span> serviceUrl = <span class="string">"https://iserver.supermap.io/iserver/services/transportationanalyst-sample/rest/networkanalyst/RoadNet@Changchun"</span>;</span><br><span class="line"><span class="keyword">var</span> findPathService = L.supermap.networkAnalystService(serviceUrl);</span><br><span class="line"><span class="comment">// 向服务器发送请求，并对返回的结果进行分析处理，展示在客户端上</span></span><br><span class="line">findPathService.findPath(findPathParams, <span class="function"><span class="keyword">function</span> (<span class="params">serviceResult</span>) </span>&#123;</span><br><span class="line">		<span class="comment">// 获取服务器返回的结果</span></span><br><span class="line">		<span class="keyword">var</span> result = serviceResult.result;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<img src="/2020/01/10/12.%20%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/5.png" class=""> 
+
+<hr>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><blockquote>
+<p>[^注释1]: 服务区分析是为网络上指定的服务中心点查找其服务范围。例如：为网络上某点计算其 30 分钟的服务区，则结果服务区内，任意点出发到该点的时间都不会超过30分钟。<br>[^注释2]: 最近设施分析是指在网络上给定一个事件点和一组设施点，为事件点查找以最小耗费能到达的一个或几个设施点，结果显示从事件点到设施点(或从设施点到事件点)的最佳路径，耗费，及行驶方向。例如事件发生点是一起交通事故，要求查找在10分钟内能到达的最近医院，超过10分钟到达的都不予考虑。此例中，事故发生地即是一个事件点，周边的医院则是设施点。最近设施查找实际上也是一种路径分析，因此，同样可以应用障碍边和障碍点的设置，在行驶路途上这些障碍将不能被穿越，在路径分析中会予以考虑。<br>[^注释3]: 选址分区分析是为了确定一个或多个待建设施的最佳或最优位置，使得设施可以用一种最经济有效的方式为需求方提供服务或者商品。选址分区不仅仅是一个选址过程，还要将需求点的需求分配到相应的新建设施的服务区中，因此称之为选址与分区。<br>[^注释4]: 多旅行商分析也称为物流配送，是指在网络数据集中，给定M个配送中心点和N个配送目的地（M，N为大于零的整数），查找经济有效的配送路径，并给出相应的行走路线。多旅行商分析功能就是解决如何合理分配配送次序和送货路线，使配送总花费达到最小或每个配送中心的花费达到最小。多旅行商分析的结果将给出，每个配送中心所负责的配送目的地，并且在某个配送中心向其负责的配送目的地配送货物的时候，又给出经过各个配送目的地的顺序，和相应的行走路线，从而使该配送中心的配送花费最少，或者使得所有的配送中心的总花费最小。<br>[^注释5]: 最佳路径分析，是求解网络中两点之间阻抗最小的路经，必须按照结点的选择顺序访问网络中的结点。“阻抗最小”有多种理解，如基于单因素考虑的时间最短、费用最低、风景最好、路况最佳、过桥最少、收费站最少、经过乡村最多等。 </p>
+</blockquote>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>庸人不自扰</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2020/01/10/12.%20%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/">http://yoursite.com/2020/01/10/12.%20%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>天行健，君子以自强不息</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/SuperMap/"># SuperMap</a>
+                    
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/"># 前端</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/01/10/13.%20%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%A1%E7%AE%97/">13. 客户端计算</a>
+            
+            
+            <a class="next" rel="next" href="/2020/01/10/11.%20%E4%BA%A4%E9%80%9A%E6%8D%A2%E4%B9%98%E5%88%86%E6%9E%90/">11. 交通换乘分析</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 庸人不自扰 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>        
+</footer>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?61def953aa124497ee616cdacabb1116";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+    </div>
+</body>
+</html>
